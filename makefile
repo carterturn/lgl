@@ -16,12 +16,12 @@ SRC = lgl_bar.cpp lgl_multibutton.cpp lgl_endmultibutton.cpp lgl_fullscreen.cpp 
 EXE = test
 CFLAGS = -I/usr/include/freetype2/ -lGL -lglfw -lftgl -lGLU
 
-build: $(SRC) $(BUTTON_SRC)
+build: $(SRC) $(BUTTON_SRC) $(INC) $(CORE_INC) $(BUTTON_INC)
 	$(CPP) -c -fPIC $(CORE_INC) $(CFLAGS)
 	$(CPP) -c -fPIC $(BUTTON_INC) $(BUTTON_SRC) $(CFLAGS)
 	$(CPP) -c -fPIC $(INC) $(SRC) $(CFLAGS)
 	$(CPP) -shared -Wl,-soname,libfuturegl.so -o libfuturegl.so *.o
-test: $(SRC) $(BUTTON_SRC) $(TEST_SRC)
+test: $(SRC) $(BUTTON_SRC) $(TEST_SRC) $(INC) $(CORE_INC) $(BUTTON_INC)
 	$(CPP) -o $(EXE) $(TEST_SRC) $(BUTTON_SRC) $(SRC) $(CFLAGS) -I.
 install:
 	[ -d /usr/include/ctsocket ] || mkdir /usr/include/futuregl
