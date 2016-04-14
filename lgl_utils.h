@@ -95,32 +95,35 @@ public:
 	static int draw_text(int corner_x, int corner_y, int size, string text, int color=10){
 	
 		if((size > 4 || size < 1) && size < 10 ){
-			cout << "LCARS GL only supports 4 font sizes\nPlease adapt your code. Sorry.\n";
+			cerr << "FutureGL Error: FutureGL only supports 4 core font sizes\nPlease adapt your code. Sorry.\n";
 			return -1;
 		}
 	
 		colors(1, color);
-		glRasterPos2f(corner_x, corner_y);
+//		glRasterPos2f(corner_x, corner_y);
+		glTranslated(corner_x, corner_y, 0);
 	
 		// Create a pixmap font from a TrueType file.
-		FTGLPixmapFont *font = new FTGLPixmapFont("font.ttf");
+		FTFont *font = new FTTextureFont("font.ttf");
 	
 		// If something went wrong, bail out.
 		if(font->Error()){
-		    cout << "Font not found\n";
+		    cerr << "FutureGL Error: Font not found\n";
 		    return -1;
 		}
 	
 		// Set the font size and render a small text.
 		
-		if(size == 1) font->FaceSize(36);
-		else if(size == 2) font->FaceSize(18);
-		else if(size == 3) font->FaceSize(8);
-		else if(size == 4) font->FaceSize(8);
+		if(size == 1) font->FaceSize(72);
+		else if(size == 2) font->FaceSize(36);
+		else if(size == 3) font->FaceSize(16);
+		else if(size == 4) font->FaceSize(16);
 		else font->FaceSize(size);
 		font->Render(text.c_str());
 
 		delete(font);
+
+		glTranslated(-corner_x, -corner_y, 0);
 	
 		return 0;
 	}
