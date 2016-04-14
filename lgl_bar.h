@@ -31,7 +31,7 @@ typedef struct{
 
 class lgl_bar : public lgl_object {
 public:
-	lgl_bar(int corner_x, int corner_y, int length, int era, int color, float scale) : lgl_object(era, color, scale){
+	lgl_bar(int corner_x, int corner_y, int length, int era, int color) : lgl_object(era, color){
 		data.x1 = corner_x;
 		data.x2 = corner_x + length;
 		data.y1 = corner_y;

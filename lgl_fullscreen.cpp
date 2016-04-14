@@ -43,8 +43,8 @@ int lgl_fullscreen::draw(){
 	lgl_shapes::rectangle(fullscreen.x+fullscreen.x_size*1/9, fullscreen.x+fullscreen.x_size*1/9+sub_text.length()*12, fullscreen.y, fullscreen.y+(lgl_const::button_height*4/5));
 	lgl_shapes::rectangle(fullscreen.x+fullscreen.x_size*5/9, fullscreen.x+fullscreen.x_size*5/9+main_text.length()*14, fullscreen.y+fullscreen.y_size-lgl_const::button_height, fullscreen.y+fullscreen.y_size);
 	
-	lgl_utils::draw_text(fullscreen.x+fullscreen.x_size*1/9, fullscreen.y, 2, scale, sub_text, 1);
-	lgl_utils::draw_text(fullscreen.x+fullscreen.x_size*5/9, fullscreen.y+fullscreen.y_size-lgl_const::button_height, 1, scale, main_text, 1);
+	lgl_utils::draw_text(fullscreen.x+fullscreen.x_size*1/9, fullscreen.y, 2, sub_text, 1);
+	lgl_utils::draw_text(fullscreen.x+fullscreen.x_size*5/9, fullscreen.y+fullscreen.y_size-lgl_const::button_height, 1, main_text, 1);
 	
 	glColor3f(0.0, 0.0, 0.0);
 	

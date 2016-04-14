@@ -31,7 +31,7 @@ int lgl_endbutton::draw(){
 	if(orientation == 1) lgl_shapes::arc(data.x1+lgl_const::button_height/2, data.y1+lgl_const::button_height/2, lgl_const::button_height/2, 90, 270);
 	if(orientation == 0) lgl_shapes::arc(data.x2-lgl_const::button_height/2, data.y1+lgl_const::button_height/2, lgl_const::button_height/2, -90, 90);
 	
-	lgl_utils::draw_text(data.x1+(lgl_const::button_height/2 * orientation)+5, data.y1+5, 3, scale, text);
+	lgl_utils::draw_text(data.x1+(lgl_const::button_height/2 * orientation)+5, data.y1+5, 3, text);
 	
 	return 0;
 }

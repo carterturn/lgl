@@ -36,7 +36,7 @@
 class futuregl {
 
 public:
-	futuregl(float scale, int era);
+	futuregl(int era);
 	~futuregl();
 
 	int button(int corner_x, int corner_y, int size, int color, std::string text);
@@ -58,7 +58,6 @@ public:
 	std::string getclicked(int mouse_x, int mouse_y);
 	
 private:
-	float scale;
 	int era;
 	
 	std::vector<lgl_button> buttons;

@@ -21,7 +21,7 @@ build: $(SRC) $(BUTTON_SRC)
 	$(CPP) -c -fPIC $(BUTTON_INC) $(BUTTON_SRC) $(CFLAGS)
 	$(CPP) -c -fPIC $(INC) $(SRC) $(CFLAGS)
 	$(CPP) -shared -Wl,-soname,libfuturegl.so -o libfuturegl.so *.o
-test:
+test: $(SRC) $(BUTTON_SRC) $(TEST_SRC)
 	$(CPP) -o $(EXE) $(TEST_SRC) $(BUTTON_SRC) $(SRC) $(CFLAGS) -I.
 install:
 	[ -d /usr/include/ctsocket ] || mkdir /usr/include/futuregl

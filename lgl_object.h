@@ -21,10 +21,9 @@
 
 class lgl_object {
 public:
-	lgl_object(int era, int color, float scale) {
+	lgl_object(int era, int color) {
 		this->era = era;
 		this->color = color;
-		this->scale = scale;
 	}
 	~lgl_object(){}
 	
@@ -33,5 +32,4 @@ public:
 protected:
 	int era;
 	int color;
-	float scale;
 };

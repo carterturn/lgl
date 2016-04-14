@@ -25,8 +25,8 @@
 
 class lgl_elbowbutton : public lgl_elbow, public lgl_abstract_button {
 public:
-	lgl_elbowbutton(int corner_x, int corner_y, int length, int size, int orientation_x, int orientation_y, int era, int color, float scale, std::string text) 
-: lgl_elbow(corner_x, corner_y, length, size, orientation_x, orientation_y, era, color, scale, text), lgl_abstract_button(era, color, scale, text){
+	lgl_elbowbutton(int corner_x, int corner_y, int length, int size, int orientation_x, int orientation_y, int era, int color, std::string text) 
+: lgl_elbow(corner_x, corner_y, length, size, orientation_x, orientation_y, era, color, text), lgl_abstract_button(era, color, text){
 		if(orientation_x == 0){
 			if(orientation_y == 0){
 				data.x1 = corner_x;

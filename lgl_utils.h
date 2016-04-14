@@ -92,7 +92,7 @@ public:
 		}
 	}
 	
-	static int draw_text(int corner_x, int corner_y, int size, float scale, string text, int color=10){
+	static int draw_text(int corner_x, int corner_y, int size, string text, int color=10){
 	
 		if((size > 4 || size < 1) && size < 10 ){
 			cout << "LCARS GL only supports 4 font sizes\nPlease adapt your code. Sorry.\n";
@@ -113,11 +113,11 @@ public:
 	
 		// Set the font size and render a small text.
 		
-		if(size == 1) font->FaceSize(36*scale);
-		else if(size == 2) font->FaceSize(18*scale);
-		else if(size == 3) font->FaceSize(8*scale);
-		else if(size == 4) font->FaceSize(8*scale);
-		else font->FaceSize(size*scale);
+		if(size == 1) font->FaceSize(36);
+		else if(size == 2) font->FaceSize(18);
+		else if(size == 3) font->FaceSize(8);
+		else if(size == 4) font->FaceSize(8);
+		else font->FaceSize(size);
 		font->Render(text.c_str());
 
 		delete(font);

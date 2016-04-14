@@ -31,7 +31,7 @@ using namespace std;
 #define WIN_X 1600
 #define WIN_Y 756
 
-futuregl future(2, 3);
+futuregl future(3);
 
 short iter[5];
 
@@ -130,7 +130,7 @@ int main(int argc, char** argv) {
 
 	glfwMakeContextCurrent(window);
 	glfwSetMouseButtonCallback(window, mouse);
- 	glOrtho(0, WIN_X, 0, WIN_Y, -1.0, 1.0);
+ 	glOrtho(0, WIN_X/2, 0, WIN_Y/2, -1.0, 1.0);
 	cout << "OpenGL init complete\n";
 	futureInit();
 	cout << "future init complete\n";

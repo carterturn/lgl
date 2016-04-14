@@ -37,7 +37,7 @@ int lgl_endmultibutton::draw(){
 	string number = lgl_utils::its(value);
 	if(value < 10) number = "0"+number;
 	
-	lgl_utils::draw_text(data.x1+15, data.y1+5, 2, scale, number, 0);
+	lgl_utils::draw_text(data.x1+15, data.y1+5, 2, number, 0);
 
 	return 0;
 }

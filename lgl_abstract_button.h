@@ -30,12 +30,9 @@ typedef struct {
 
 } button_data;
 
-class lgl_abstract_button {
+class lgl_abstract_button : public lgl_object {
 public:
-	lgl_abstract_button(int era, int color, float scale, std::string text){
-		this->era = era;
-		this->color = color;
-		this->scale = scale;
+lgl_abstract_button(int era, int color, std::string text) : lgl_object(era, color) {
 		this->text = text;
 		
 		data.x1 = 0;
@@ -52,8 +49,5 @@ public:
 	virtual int draw() = 0;
 
 protected:
-	int era;
-	int color;
-	float scale;
 	button_data data;
 };

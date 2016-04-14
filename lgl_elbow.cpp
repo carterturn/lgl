@@ -50,7 +50,7 @@ int lgl_elbow::draw_x0_y0(){
 	glColor3f(0.0, 0.0, 0.0);
 	
 	lgl_shapes::arc(elbow.x+lgl_const::button_width+27, elbow.y+10+elbow.size*lgl_const::button_height+(elbow.size-1)*2, 27, 90, 180);
-	lgl_utils::draw_text(elbow.x+5, elbow.y+5, 3, scale, text);
+	lgl_utils::draw_text(elbow.x+5, elbow.y+5, 3, text);
 }
 
 int lgl_elbow::draw_x1_y0(){
@@ -62,7 +62,7 @@ int lgl_elbow::draw_x1_y0(){
 	glColor3f(0.0, 0.0, 0.0);
 	
 	lgl_shapes::arc(elbow.x+elbow.length, elbow.y+10+elbow.size*lgl_const::button_height+(elbow.size-1)*2, 27, 0, 90);
-	lgl_utils::draw_text(elbow.x+elbow.length+27+5, elbow.y+5, 3, scale, text);
+	lgl_utils::draw_text(elbow.x+elbow.length+27+5, elbow.y+5, 3, text);
 }
 
 int lgl_elbow::draw_x0_y1(){
@@ -74,7 +74,7 @@ int lgl_elbow::draw_x0_y1(){
 	glColor3f(0.0, 0.0, 0.0);
 	
 	lgl_shapes::arc(elbow.x+lgl_const::button_width+27, elbow.y+45, 27, 180, 270);
-	lgl_utils::draw_text(elbow.x+5, elbow.y+45+lgl_const::button_height*elbow.size-15, 3, scale, text);
+	lgl_utils::draw_text(elbow.x+5, elbow.y+45+lgl_const::button_height*elbow.size-15, 3, text);
 }
 
 int lgl_elbow::draw_x1_y1(){
@@ -86,5 +86,5 @@ int lgl_elbow::draw_x1_y1(){
 	glColor3f(0.0, 0.0, 0.0);
 	
 	lgl_shapes::arc(elbow.x+elbow.length, elbow.y+45, 27, -90, 0);
-	lgl_utils::draw_text(elbow.x+elbow.length+27+5, elbow.y+lgl_const::button_height*elbow.size+45-15, 3, scale, text);
+	lgl_utils::draw_text(elbow.x+elbow.length+27+5, elbow.y+lgl_const::button_height*elbow.size+45-15, 3, text);
 }

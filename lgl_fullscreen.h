@@ -31,7 +31,7 @@ typedef struct {
 
 class lgl_fullscreen : public lgl_object {
 public:
-	lgl_fullscreen(int corner_x, int corner_y, int size_x, int size_y, int era, int color, float scale, std::string main_text, std::string sub_text) : lgl_object(era, color, scale){
+	lgl_fullscreen(int corner_x, int corner_y, int size_x, int size_y, int era, int color, std::string main_text, std::string sub_text) : lgl_object(era, color){
 		fullscreen.x = fullscreen.x;
 		fullscreen.y = fullscreen.y;
 		fullscreen.x_size = fullscreen.x_size;

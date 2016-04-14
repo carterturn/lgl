@@ -28,7 +28,7 @@ int lgl_button::draw(){
 	
 	lgl_shapes::rectangle(data.x1, data.x2, data.y1, data.y2);
 	
-	lgl_utils::draw_text(data.x1+5, data.y1+5, 3, scale, text);
+	lgl_utils::draw_text(data.x1+5, data.y1+5, 3, text);
 	
 	return 0;
 }

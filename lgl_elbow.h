@@ -33,7 +33,7 @@ typedef struct {
 
 class lgl_elbow : public lgl_object {
 public:
-	lgl_elbow(int corner_x, int corner_y, int length, int size, int orientation_x, int orientation_y, int era, int color, float scale, std::string text) : lgl_object(era, color, scale){
+	lgl_elbow(int corner_x, int corner_y, int length, int size, int orientation_x, int orientation_y, int era, int color, std::string text) : lgl_object(era, color){
 		elbow.x = corner_x;
 		elbow.y = corner_y;
 		elbow.length = length;

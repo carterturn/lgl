@@ -21,8 +21,7 @@
 
 using namespace std;
 
-futuregl::futuregl(float scale, int era){
-	this->scale = scale;
+futuregl::futuregl(int era){
 	this->era = era;
 	
 	buttons.clear();
@@ -41,55 +40,55 @@ futuregl::futuregl(float scale, int era){
 futuregl::~futuregl(){}
 
 int futuregl::button(int corner_x, int corner_y, int size, int color, std::string text){
-	lgl_button button(corner_x, corner_y, size, era, color, scale, text);
+	lgl_button button(corner_x, corner_y, size, era, color, text);
 	buttons.push_back(button);
 	return 0;
 }
 
 int futuregl::cmdbutton(int corner_x, int corner_y, int color, std::string text){
-	lgl_cmdbutton cmdbutton(corner_x, corner_y, scale, era, color, text);
+	lgl_cmdbutton cmdbutton(corner_x, corner_y, era, color, text);
 	cmdbuttons.push_back(cmdbutton);
 	return 0;
 }
 
 int futuregl::endbutton(int corner_x, int corner_y, int orientation, int color, std::string text){
-	lgl_endbutton endbutton(corner_x, corner_y, orientation, scale, era, color, text);
+	lgl_endbutton endbutton(corner_x, corner_y, orientation, era, color, text);
 	endbuttons.push_back(endbutton);
 	return 0;
 }
 
 int futuregl::multibutton(int corner_x, int corner_y, int extend, int color){
-	lgl_multibutton multibutton(corner_x, corner_y, extend, era, color, scale);
+	lgl_multibutton multibutton(corner_x, corner_y, extend, era, color);
 	multibuttons.push_back(multibutton);
 	return 0;
 }
 
 int futuregl::endmultibutton(int corner_x, int corner_y, int color){
-	lgl_endmultibutton endmultibutton(corner_x, corner_y, era, color, scale);
+	lgl_endmultibutton endmultibutton(corner_x, corner_y, era, color);
 	endmultibuttons.push_back(endmultibutton);
 	return 0;
 }
 
 int futuregl::elbow(int corner_x, int corner_y, int length, int size, int orientation_x, int orientation_y, int color, std::string text){
-	lgl_elbow elbow(corner_x, corner_y, length, size, orientation_x, orientation_y, era, color, scale, text);
+	lgl_elbow elbow(corner_x, corner_y, length, size, orientation_x, orientation_y, era, color, text);
 	elbows.push_back(elbow);
 	return 0;
 }
 
 int futuregl::elbowbutton(int corner_x, int corner_y, int length, int size, int orientation_x, int orientation_y, int color, std::string text){
-	lgl_elbowbutton elbowbutton(corner_x, corner_y, length, size, orientation_x, orientation_y, era, color, scale, text);
+	lgl_elbowbutton elbowbutton(corner_x, corner_y, length, size, orientation_x, orientation_y, era, color, text);
 	elbowbuttons.push_back(elbowbutton);
 	return 0;
 }
 
 int futuregl::bar(int corner_x, int corner_y, int length, int color){
-	lgl_bar bar(corner_x, corner_y, length, era, color, scale);
+	lgl_bar bar(corner_x, corner_y, length, era, color);
 	bars.push_back(bar);
 	return 0;
 }
 
 int futuregl::fullscreen(int corner_x, int corner_y, int size_x, int size_y, int color, std::string main_text, std::string sub_text){
-	lgl_fullscreen fullscreen(corner_x, corner_y, size_x, size_y, era, color, scale, main_text, sub_text);
+	lgl_fullscreen fullscreen(corner_x, corner_y, size_x, size_y, era, color, main_text, sub_text);
 	fullscreens.push_back(fullscreen);
 	return 0;
 }

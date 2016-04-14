@@ -24,7 +24,7 @@
 
 class lgl_button : public lgl_abstract_button {
 public:
-	lgl_button(int corner_x, int corner_y, int size, int era, int color, float scale, std::string text) : lgl_abstract_button(era, color, scale, text){
+	lgl_button(int corner_x, int corner_y, int size, int era, int color, std::string text) : lgl_abstract_button(era, color, text){
 		data.x1 = corner_x;
 		data.y1 = corner_y;
 		data.x2 = corner_x + lgl_const::button_width;

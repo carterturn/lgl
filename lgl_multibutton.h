@@ -31,7 +31,7 @@ typedef struct {
 
 class lgl_multibutton : public lgl_object {
 public:
-	lgl_multibutton(int corner_x, int corner_y, int extend, int era, int color, float scale) : lgl_object(era, color, scale){
+	lgl_multibutton(int corner_x, int corner_y, int extend, int era, int color) : lgl_object(era, color){
 		data.x1 = corner_x;
 		data.x2 = corner_x + lgl_const::button_width;
 		data.y1 = corner_y;
