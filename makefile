@@ -4,7 +4,7 @@ TEST_SRC = test.cpp
 
 #The core includes used by almost all files
 CORE_INC = lgl_const.h lgl_shapes.h lgl_utils.h lgl_object.h
-CORE_SRC = lgl_utils.cpp
+CORE_SRC = lgl_shapes.cpp lgl_utils.cpp
 
 #The most common buttons
 BUTTON_INC = lgl_abstract_button.h lgl_button.h lgl_cmdbutton.h lgl_endbutton.h
