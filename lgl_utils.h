@@ -104,7 +104,7 @@ public:
 		glTranslated(corner_x, corner_y, 0);
 	
 		// Create a pixmap font from a TrueType file.
-		FTFont *font = new FTTextureFont("font.ttf");
+		FTFont *font = new FTTextureFont("/etc/font.ttf");
 	
 		// If something went wrong, bail out.
 		if(font->Error()){
