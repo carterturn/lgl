@@ -31,6 +31,8 @@ using namespace std;
 #define WIN_X 1600
 #define WIN_Y 756
 
+const float scale = 0.5f;
+
 futuregl future(3);
 
 short iter[5];
@@ -93,6 +95,8 @@ void mouse(GLFWwindow * window, int button, int state, int mods) {
 			glfwGetCursorPos(window, &Mx, &My);
 			
 			My = WIN_Y - My;
+			Mx = Mx/scale;
+			My = My/scale;
 			string button = future.getclicked(Mx, My);
 			
 			if(button != "") cout << button << " clicked\n";
@@ -130,7 +134,7 @@ int main(int argc, char** argv) {
 
 	glfwMakeContextCurrent(window);
 	glfwSetMouseButtonCallback(window, mouse);
- 	glOrtho(0, WIN_X/2, 0, WIN_Y/2, -1.0, 1.0);
+ 	glOrtho(0, WIN_X/scale, 0, WIN_Y/scale, -1.0, 1.0);
 	cout << "OpenGL init complete\n";
 	futureInit();
 	cout << "future init complete\n";
