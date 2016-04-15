@@ -31,7 +31,7 @@ using namespace std;
 #define WIN_X 1600
 #define WIN_Y 756
 
-const float scale = 0.5f;
+const float scale = 2.0f;
 
 futuregl future(3);
 
