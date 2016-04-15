@@ -4,6 +4,7 @@ TEST_SRC = test.cpp
 
 #The core includes used by almost all files
 CORE_INC = lgl_const.h lgl_shapes.h lgl_utils.h lgl_object.h
+CORE_SRC = lgl_utils.cpp
 
 #The most common buttons
 BUTTON_INC = lgl_abstract_button.h lgl_button.h lgl_cmdbutton.h lgl_endbutton.h
@@ -16,13 +17,13 @@ SRC = lgl_bar.cpp lgl_multibutton.cpp lgl_endmultibutton.cpp lgl_fullscreen.cpp 
 EXE = test
 CFLAGS = -I/usr/include/freetype2/ -lGL -lglfw -lftgl -lGLU
 
-build: $(SRC) $(BUTTON_SRC) $(INC) $(CORE_INC) $(BUTTON_INC)
-	$(CPP) -c -fPIC $(CORE_INC) $(CFLAGS)
+build: $(SRC) $(BUTTON_SRC) $(CORE_SRC) $(INC) $(CORE_INC) $(BUTTON_INC)
+	$(CPP) -c -fPIC $(CORE_SRC) $(CORE_INC) $(CFLAGS)
 	$(CPP) -c -fPIC $(BUTTON_INC) $(BUTTON_SRC) $(CFLAGS)
 	$(CPP) -c -fPIC $(INC) $(SRC) $(CFLAGS)
 	$(CPP) -shared -Wl,-soname,libfuturegl.so -o libfuturegl.so *.o
-test: $(SRC) $(BUTTON_SRC) $(TEST_SRC) $(INC) $(CORE_INC) $(BUTTON_INC)
-	$(CPP) -o $(EXE) $(TEST_SRC) $(BUTTON_SRC) $(SRC) $(CFLAGS) -I.
+test: $(SRC) $(BUTTON_SRC) $(TEST_SRC) $(CORE_SRC) $(INC) $(CORE_INC) $(BUTTON_INC)
+	$(CPP) -o $(EXE) $(TEST_SRC) $(BUTTON_SRC) $(SRC) $(CORE_SRC) $(CFLAGS) -I.
 install:
 	[ -d /usr/include/ctsocket ] || mkdir /usr/include/futuregl
 	cp -f *.h /usr/include/futuregl/
