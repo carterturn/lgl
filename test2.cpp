@@ -67,22 +67,22 @@ void mouse(GLFWwindow * window, int button, int state, int mods) {
 			
 			if(button != "") cout << button << " clicked\n";
 			
-			if(button == "INCREASE 0") iter[0]++;
-			if(button == "INCREASE 1") iter[1]++;
-			if(button == "INCREASE 2") iter[2]++;
-			if(button == "INCREASE 3") iter[3]++;
-			if(button == "INCREASE 4") iter[4]++;
-			if(button == "DECREASE 0") iter[0]--;
-			if(button == "DECREASE 1") iter[1]--;
-			if(button == "DECREASE 2") iter[2]--;
-			if(button == "DECREASE 3") iter[3]--;
-			if(button == "DECREASE 4") iter[4]--;
-			if(button == "RESET 0") iter[0] = 0;
-			if(button == "RESET 1") iter[1] = 0;
-			if(button == "RESET 2") iter[2] = 0;
-			if(button == "RESET 3") iter[3] = 0;
-			if(button == "RESET 4") iter[4] = 0;
-			if(button == "RESET ALL"){
+			if(button == "INCREASE_0") iter[0]++;
+			if(button == "INCREASE_1") iter[1]++;
+			if(button == "INCREASE_2") iter[2]++;
+			if(button == "INCREASE_3") iter[3]++;
+			if(button == "INCREASE_4") iter[4]++;
+			if(button == "DECREASE_0") iter[0]--;
+			if(button == "DECREASE_1") iter[1]--;
+			if(button == "DECREASE_2") iter[2]--;
+			if(button == "DECREASE_3") iter[3]--;
+			if(button == "DECREASE_4") iter[4]--;
+			if(button == "RESET_0") iter[0] = 0;
+			if(button == "RESET_1") iter[1] = 0;
+			if(button == "RESET_2") iter[2] = 0;
+			if(button == "RESET_3") iter[3] = 0;
+			if(button == "RESET_4") iter[4] = 0;
+			if(button == "RESET_ALL"){
 				for(int i = 0; i < 5; i++) iter[i] = 0;
 			}
 		}
@@ -90,7 +90,7 @@ void mouse(GLFWwindow * window, int button, int state, int mods) {
 }
 
 int main(int argc, char* argv[]) {
-	for(int i = 0; i < 5; i++) iter[i] = 0;
+	for(int i = 0; i < 5; i++) iter[i] = 2;
 	glfwInit();
 	GLFWwindow * window = glfwCreateWindow(WIN_X, WIN_Y, "FutureGL Test", NULL, NULL);
 	if(!window){
