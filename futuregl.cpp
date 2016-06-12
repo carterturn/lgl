@@ -18,12 +18,12 @@
 */
 
 #include "futuregl.h"
+#include <fstream>
+#include <cstdlib>
 
 using namespace std;
 
-futuregl::futuregl(int era){
-	this->era = era;
-	
+futuregl::futuregl(int era) : era(era){
 	buttons.clear();
 	cmdbuttons.clear();
 	endbuttons.clear();
@@ -130,4 +130,104 @@ string futuregl::getclicked(int mouse_x, int mouse_y){
 	}
 	
 	return clicked_title;
+}
+
+vector<string> split_string(string data, char splitter){
+	vector<string> tokens = vector<string>();
+	string tmp = "";
+	for(int i = 0; i < data.length(); i++){
+		if(data[i] == splitter){
+			tokens.push_back(tmp);
+			tmp = "";
+		}
+		else{
+			tmp += data[i];
+		}
+	}
+	tokens.push_back(tmp);
+	return tokens;
+}
+
+int futuregl::load_config(string path){
+
+	fstream configfile;
+	configfile.open(path.c_str());
+
+	while(!configfile.eof()){
+		string line;
+		getline(configfile, line);
+
+		vector<string> data = split_string(line, ' ');
+
+		if(data[0] == "button"){
+			button(atoi(data[1].c_str()), // corner_x
+			       atoi(data[2].c_str()), // corner_y
+			       atoi(data[3].c_str()), // size
+			       atoi(data[4].c_str()), // color
+			       data[5]); // text
+		}
+		else if(data[0] == "cmdbutton"){
+			cmdbutton(atoi(data[1].c_str()), // corner_x
+				  atoi(data[2].c_str()), // corner_y
+				  atoi(data[3].c_str()), // color
+				  data[4]); // text
+		}
+		else if(data[0] == "endbutton"){
+			endbutton(atoi(data[1].c_str()), // corner_x
+				  atoi(data[2].c_str()), // corner_y
+				  atoi(data[3].c_str()), // orientation
+				  atoi(data[4].c_str()), // color
+				  data[5]); // text
+		}
+		else if(data[0] == "multibutton"){
+			multibutton(atoi(data[1].c_str()), // corner_x
+				    atoi(data[2].c_str()), // corner_y
+				    atoi(data[3].c_str()), // extend
+				    atoi(data[4].c_str())); //color
+		}
+		else if(data[0] == "endmultibutton"){
+			endmultibutton(atoi(data[1].c_str()), // corner_x
+				       atoi(data[2].c_str()), // corner_y
+				       atoi(data[3].c_str())); //color
+		}
+		else if(data[0] == "elbow"){
+			elbow(atoi(data[1].c_str()), // corner_x
+			      atoi(data[2].c_str()), // corner_y
+			      atoi(data[3].c_str()), // length
+			      atoi(data[4].c_str()), // size
+			      atoi(data[5].c_str()), // orientation_x
+			      atoi(data[6].c_str()), // orientation_y
+			      atoi(data[7].c_str()), // color
+			      data[8]); // text
+		}
+		else if(data[0] == "elbowbutton"){
+			elbowbutton(atoi(data[1].c_str()), // corner_x
+			      atoi(data[2].c_str()), // corner_y
+			      atoi(data[3].c_str()), // length
+			      atoi(data[4].c_str()), // size
+			      atoi(data[5].c_str()), // orientation_x
+			      atoi(data[6].c_str()), // orientation_y
+			      atoi(data[7].c_str()), // color
+			      data[8]); // text
+		}
+		else if(data[0] == "bar"){
+			bar(atoi(data[1].c_str()), // corner_x
+			    atoi(data[2].c_str()), // corner_y
+			    atoi(data[3].c_str()), // length
+			    atoi(data[4].c_str())); // color
+		}
+		else if(data[0] == "fullscreen"){
+			fullscreen(atoi(data[1].c_str()), // corner_x
+				   atoi(data[2].c_str()), // corner_y
+				   atoi(data[3].c_str()), // size_x
+				   atoi(data[4].c_str()), // size_y
+				   atoi(data[5].c_str()), // color
+				   data[6], // main_text
+				   data[7]); // sub_text
+		}
+	}
+
+	configfile.close();
+
+	return 0;
 }

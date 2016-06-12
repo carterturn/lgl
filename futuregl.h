@@ -55,6 +55,8 @@ public:
 	int draw();
 	
 	std::string getclicked(int mouse_x, int mouse_y);
+
+	int load_config(std::string path);
 	
 private:
 	int era;
