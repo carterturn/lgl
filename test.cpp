@@ -56,36 +56,36 @@ void draw(){
 
 void futureInit(){
 	
-	future.elbow(2, 133, 157, 4, 0, 0, 6, "FUTURE GUI");
-	future.elbow(2, 2, 157, 3, 0, 1, 6, "TEST");
-	future.elbow(278, 247, 65, 1, 1, 0, 6, "FUTURE GUI");
+	future.elbow(0, 4, 2, 4, 0, 0, 6, "FUTURE GUI");
+	future.elbow(0, 0, 2, 3, 0, 1, 6, "TEST");
+	future.elbow(3, 7, 1, 1, 1, 0, 6, "FUTURE GUI");
 	
-	future.elbowbutton(278, 2, 65, 1, 1, 1, 7, "RESET ALL");
+	future.elbowbutton(3, 0, 1, 1, 1, 1, 7, "RESET ALL");
 	
 	// Make sure to track the order of initialization
-	future.multibutton(370, 57, 1, 3);
-	future.multibutton(370, 95, 1, 3);
-	future.multibutton(370, 133, 1, 3);
-	future.multibutton(370, 171, 1, 3);
-	future.multibutton(370, 209, 1, 3);
+	future.multibutton(4, 2, 1, 3);
+	future.multibutton(4, 3, 1, 3);
+	future.multibutton(4, 4, 1, 3);
+	future.multibutton(4, 5, 1, 3);
+	future.multibutton(4, 6, 1, 3);
 	
-	future.button(278, 57, 1, 4, "INCREASE 0");
-	future.button(278, 95, 1, 4, "INCREASE 1");
-	future.button(278, 133, 1, 4, "INCREASE 2");
-	future.button(278, 171, 1, 4, "INCREASE 3");
-	future.button(278, 209, 1, 4, "INCREASE 4");
+	future.button(3, 2, 1, 4, "INCREASE 0");
+	future.button(3, 3, 1, 4, "INCREASE 1");
+	future.button(3, 4, 1, 4, "INCREASE 2");
+	future.button(3, 5, 1, 4, "INCREASE 3");
+	future.button(3, 6, 1, 4, "INCREASE 4");
 	
-	future.button(186, 57, 1, 5, "DECREASE 0");
-	future.button(186, 95, 1, 5, "DECREASE 1");
-	future.button(186, 133, 1, 5, "DECREASE 2");
-	future.button(186, 171, 1, 5, "DECREASE 3");
-	future.button(186, 209, 1, 5, "DECREASE 4");
+	future.button(2, 2, 1, 5, "DECREASE 0");
+	future.button(2, 3, 1, 5, "DECREASE 1");
+	future.button(2, 4, 1, 5, "DECREASE 2");
+	future.button(2, 5, 1, 5, "DECREASE 3");
+	future.button(2, 6, 1, 5, "DECREASE 4");
 	
-	future.cmdbutton(94, 57, 8, "RESET 0");
-	future.endbutton(94, 95, 1, 8, "RESET 1");
-	future.endbutton(94, 133, 1, 8, "RESET 2");
-	future.endbutton(94, 171, 1, 8, "RESET 3");
-	future.endbutton(94, 209, 1, 8, "RESET 4");
+	future.cmdbutton(1, 2, 8, "RESET 0");
+	future.endbutton(1, 3, 1, 8, "RESET 1");
+	future.endbutton(1, 4, 1, 8, "RESET 2");
+	future.endbutton(1, 5, 1, 8, "RESET 3");
+	future.endbutton(1, 6, 1, 8, "RESET 4");
 }
 
 void mouse(GLFWwindow * window, int button, int state, int mods) {

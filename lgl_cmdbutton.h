@@ -25,10 +25,10 @@
 class lgl_cmdbutton : public lgl_abstract_button {
 public:
 	lgl_cmdbutton(int corner_x, int corner_y, int era, int color, std::string text) : lgl_abstract_button(era, color, text){
-		data.x1 = corner_x;
-		data.y1 = corner_y;
-		data.x2 = corner_x + lgl_const::button_width;
-		data.y2 = corner_y + lgl_const::button_height;
+		data.x1 = corner_x*(lgl_const::button_width + lgl_const::gap);
+		data.y1 = corner_y*(lgl_const::button_height + lgl_const::gap);
+		data.x2 = corner_x*(lgl_const::button_width + lgl_const::gap) + lgl_const::button_width;
+		data.y2 = corner_y*(lgl_const::button_height + lgl_const::gap) + lgl_const::button_height;
 	}
 	
 	int draw();

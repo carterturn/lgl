@@ -20,6 +20,7 @@
 #pragma once
 
 #include "lgl_object.h"
+#include "lgl_const.h"
 #include <iostream>
 
 typedef struct {
@@ -32,10 +33,10 @@ typedef struct {
 class lgl_fullscreen : public lgl_object {
 public:
 	lgl_fullscreen(int corner_x, int corner_y, int size_x, int size_y, int era, int color, std::string main_text, std::string sub_text) : lgl_object(era, color){
-		fullscreen.x = fullscreen.x;
-		fullscreen.y = fullscreen.y;
-		fullscreen.x_size = fullscreen.x_size;
-		fullscreen.y_size = fullscreen.y_size;
+		fullscreen.x = fullscreen.x*(lgl_const::button_width + lgl_const::gap);
+		fullscreen.y = fullscreen.y*(lgl_const::button_height + lgl_const::gap);
+		fullscreen.x_size = fullscreen.x_size*(lgl_const::button_width + lgl_const::gap);
+		fullscreen.y_size = fullscreen.y_size*(lgl_const::button_height + lgl_const::gap);
 		
 		this->main_text = main_text;
 		this->sub_text = sub_text;

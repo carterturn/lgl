@@ -20,6 +20,7 @@
 #pragma once
 
 #include "lgl_object.h"
+#include "lgl_const.h"
 #include <iostream>
 
 typedef struct {
@@ -34,9 +35,9 @@ typedef struct {
 class lgl_elbow : public lgl_object {
 public:
 	lgl_elbow(int corner_x, int corner_y, int length, int size, int orientation_x, int orientation_y, int era, int color, std::string text) : lgl_object(era, color){
-		elbow.x = corner_x;
-		elbow.y = corner_y;
-		elbow.length = length;
+		elbow.x = corner_x*(lgl_const::button_width + lgl_const::gap);
+		elbow.y = corner_y*(lgl_const::button_height + lgl_const::gap);
+		elbow.length = length*(lgl_const::button_width + lgl_const::gap) - 27;
 		elbow.size = size - 1;
 		elbow.x_orient = orientation_x;
 		elbow.y_orient = orientation_y;

@@ -29,30 +29,35 @@ public:
 : lgl_elbow(corner_x, corner_y, length, size, orientation_x, orientation_y, era, color, text), lgl_abstract_button(era, color, text){
 		if(orientation_x == 0){
 			if(orientation_y == 0){
-				data.x1 = corner_x;
-				data.y1 = corner_y;
-				data.x2 = corner_x + lgl_const::button_width;
-				data.y2 = corner_y + 20 + lgl_const::button_height*(size-1) + 2*(size-1);
+				data.x1 = corner_x*(lgl_const::button_width + lgl_const::gap);
+				data.y1 = corner_y*(lgl_const::button_height + lgl_const::gap) - lgl_const::gap;
+				data.x2 = corner_x*(lgl_const::button_width + lgl_const::gap)
+					+ lgl_const::button_width;
+				data.y2 = (corner_y + size)*(lgl_const::button_height + lgl_const::gap);
 			}	
 			else{
-				data.x1 = corner_x;
-				data.y1 = corner_y + 35;
-				data.x2 = corner_x + lgl_const::button_width;
-				data.y2 = corner_y + 45 + 10 + lgl_const::button_height*(size-1) + 2*(size-1);
+				data.x1 = corner_x*(lgl_const::button_width + lgl_const::gap);
+				data.y1 = corner_y*(lgl_const::button_height + lgl_const::gap) + 35;
+				data.x2 = corner_x*(lgl_const::button_width + lgl_const::gap)
+					+ lgl_const::button_width;
+				data.y2 = (corner_y + size)*(lgl_const::button_height + lgl_const::gap) + 36;
 			}
 		}
 		else {
 			if(orientation_y == 0){
-				data.x1 = corner_x + length + 27;
-				data.y1 = corner_y;
-				data.x2 = corner_x + length + 27 + lgl_const::button_width;
-				data.y2 = corner_y + 20 + lgl_const::button_height*(size-1) + 2*(size-1);
+				data.x1 = corner_x*(lgl_const::button_width + lgl_const::gap) + length + 27;
+				data.y1 = corner_y*(lgl_const::button_height + lgl_const::gap) - lgl_const::gap;
+				data.x2 = corner_x*(lgl_const::button_width + lgl_const::gap)
+					+ length*lgl_const::button_width + 27 + lgl_const::button_width;
+				data.y2 = (corner_y + size)*(lgl_const::button_height + lgl_const::gap);
 			}
 			else{
-				data.x1 = corner_x + length + 27;
-				data.y1 = corner_y + 35;
-				data.x2 = corner_x + length + 27 + lgl_const::button_width;
-				data.y2 = corner_y + 45 + 10 + lgl_const::button_height*(size-1) + 2*(size-1);
+				data.x1 = corner_x*(lgl_const::button_width + lgl_const::gap)
+					+ length*lgl_const::button_width + 27;
+				data.y1 = corner_y*(lgl_const::button_height + lgl_const::gap) + 35;
+				data.x2 = corner_x*(lgl_const::button_width + lgl_const::gap)
+					+ length*lgl_const::button_width + 27 + lgl_const::button_width;
+				data.y2 = (corner_y + size)*(lgl_const::button_height + lgl_const::gap) + 36;
 			}
 		}
 	}
