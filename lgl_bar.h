@@ -37,7 +37,6 @@ public:
 		data.y1 = corner_y;
 		data.y2 = corner_y + lgl_const::button_height/2;
 	}
-	~lgl_bar(){}
 	
 	int draw();
 private:

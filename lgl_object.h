@@ -25,7 +25,6 @@ public:
 		this->era = era;
 		this->color = color;
 	}
-	~lgl_object(){}
 	
 	virtual int draw() = 0;
 

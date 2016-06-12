@@ -37,7 +37,6 @@ class futuregl {
 
 public:
 	futuregl(int era);
-	~futuregl();
 
 	int button(int corner_x, int corner_y, int size, int color, std::string text);
 	int cmdbutton(int corner_x, int corner_y, int color, std::string text);

@@ -43,7 +43,6 @@ public:
 		
 		this->text = text;
 	}
-	~lgl_elbow(){}
 	
 	virtual int draw();
 	

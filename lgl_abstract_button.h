@@ -40,7 +40,6 @@ lgl_abstract_button(int era, int color, std::string text) : lgl_object(era, colo
 		data.y1 = 0;
 		data.y2 = 0;
 	}
-	~lgl_abstract_button(){}
 	
 	virtual bool clicked(int click_x, int click_y);
 	

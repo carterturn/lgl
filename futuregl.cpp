@@ -37,8 +37,6 @@ futuregl::futuregl(int era){
 	fullscreens.clear();
 }
 
-futuregl::~futuregl(){}
-
 int futuregl::button(int corner_x, int corner_y, int size, int color, std::string text){
 	lgl_button button(corner_x, corner_y, size, era, color, text);
 	buttons.push_back(button);

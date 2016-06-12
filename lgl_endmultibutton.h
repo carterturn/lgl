@@ -24,7 +24,6 @@
 class lgl_endmultibutton : public lgl_multibutton {
 public:
 	lgl_endmultibutton(int corner_x, int corner_y, int era, int color) : lgl_multibutton(corner_x, corner_y, 0, era, color){}
-	~lgl_endmultibutton(){}
 	
 	int draw();
 };

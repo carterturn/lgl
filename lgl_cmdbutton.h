@@ -30,7 +30,6 @@ public:
 		data.x2 = corner_x + lgl_const::button_width;
 		data.y2 = corner_y + lgl_const::button_height;
 	}
-	~lgl_cmdbutton(){}
 	
 	int draw();
 };

@@ -32,7 +32,6 @@ public:
 		
 		this->size = size;
 	}
-	~lgl_button(){}
 	
 	int draw();
 

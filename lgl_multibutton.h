@@ -39,7 +39,6 @@ public:
 		
 		this->extend = extend; 
 	}
-	~lgl_multibutton(){}
 	
 	int setvalue(int value);
 	

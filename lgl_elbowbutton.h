@@ -56,7 +56,6 @@ public:
 			}
 		}
 	}
-	~lgl_elbowbutton(){}
 	
 	int draw(){
 		lgl_elbow::draw();

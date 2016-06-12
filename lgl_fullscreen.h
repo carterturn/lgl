@@ -40,7 +40,6 @@ public:
 		this->main_text = main_text;
 		this->sub_text = sub_text;
 	}
-	~lgl_fullscreen(){}
 	
 	int draw();
 private:

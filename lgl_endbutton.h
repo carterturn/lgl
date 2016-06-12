@@ -32,7 +32,6 @@ public:
 		
 		this->orientation = orientation;
 	}
-	~lgl_endbutton(){}
 	
 	int draw();
 private:
