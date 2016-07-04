@@ -28,14 +28,14 @@ test: $(SRC) $(BUTTON_SRC) $(TEST_SRC_1) $(TEST_SRC_2) $(CORE_SRC) $(INC) $(CORE
 	$(CPP) -o $(EXE_1) $(TEST_SRC_1) $(BUTTON_SRC) $(SRC) $(CORE_SRC) $(CFLAGS) -I.
 	$(CPP) -o $(EXE_2) $(TEST_SRC_2) $(BUTTON_SRC) $(SRC) $(CORE_SRC) $(CFLAGS) -I.
 install:
-	[ -d /usr/include/ctsocket ] || mkdir /usr/include/futuregl
+	[ -d /usr/include/futuregl ] || mkdir /usr/include/futuregl
 	cp -f *.h /usr/include/futuregl/
 	cp -f libfuturegl.so /usr/lib/
 	chmod a+r -R /usr/include/futuregl
 	chmod a+r /usr/lib/libfuturegl.so
 uninstall:
-	[ -d /usr/include/ctsocket ] && rm -f /usr/include/futuregl/*.h
-	[ -d /usr/include/ctsocket ] && rmdir /usr/include/futuregl
+	[ -d /usr/include/futuregl ] && rm -f /usr/include/futuregl/*.h
+	[ -d /usr/include/futuregl/* ] && rmdir /usr/include/futuregl
 	rm -f /usr/lib/libfuturegl.so
 clean:
 	for file in $$(ls *.o); do rm $$file; done

@@ -20,7 +20,6 @@
 #include "lgl_elbow.h"
 
 #include <GL/gl.h>
-#include <GL/glut.h>
 
 #include "lgl_utils.h"
 #include "lgl_shapes.h"
