@@ -1,0 +1,21 @@
+futuregl
+========
+
+Basic system for simple GUIs in OpenGL.
+Provides layout and button tools.
+
+Installation
+============
+
+make
+sudo make install
+
+Use make test to verify that your platform works.
+For non GNU/Linux systems, the makefile will have to be modified.
+
+Dependencies
+============
+
+OpenGL
+GLFW
+FTGL
