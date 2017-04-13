@@ -92,8 +92,18 @@ int futuregl::fullscreen(int corner_x, int corner_y, int size_x, int size_y, int
 }
 
 int futuregl::setmultibutton(int id, int value, bool end){
-	if(!end) multibuttons[id].setvalue(value);
-	else endmultibuttons[id].setvalue(value);
+	if(!end){
+		if(id >= multibuttons.size()){
+			return -1;
+		}
+		multibuttons[id].setvalue(value);
+	}
+	else{
+		if(id >= endmultibuttons.size()){
+			return -1;
+		}
+		endmultibuttons[id].setvalue(value);
+	}
 	
 	return 0;
 }
