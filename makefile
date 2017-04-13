@@ -20,9 +20,9 @@ EXE_2 = test_2
 CFLAGS = -I/usr/include/freetype2/ -lGL -lglfw -lftgl -lGLU
 
 build: $(SRC) $(BUTTON_SRC) $(CORE_SRC) $(INC) $(CORE_INC) $(BUTTON_INC)
-	$(CPP) -c -fPIC $(CORE_SRC) $(CORE_INC) $(CFLAGS)
-	$(CPP) -c -fPIC $(BUTTON_INC) $(BUTTON_SRC) $(CFLAGS)
-	$(CPP) -c -fPIC $(INC) $(SRC) $(CFLAGS)
+	$(CPP) -c -fPIC $(CORE_SRC) $(CFLAGS)
+	$(CPP) -c -fPIC $(BUTTON_SRC) $(CFLAGS)
+	$(CPP) -c -fPIC $(SRC) $(CFLAGS)
 	$(CPP) -shared -Wl,-soname,libfuturegl.so -o libfuturegl.so *.o
 test: $(SRC) $(BUTTON_SRC) $(TEST_SRC_1) $(TEST_SRC_2) $(CORE_SRC) $(INC) $(CORE_INC) $(BUTTON_INC)
 	$(CPP) -o $(EXE_1) $(TEST_SRC_1) $(BUTTON_SRC) $(SRC) $(CORE_SRC) $(CFLAGS) -I.
