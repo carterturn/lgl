@@ -1,20 +1,20 @@
 /*
   Copyright 2015 Carter Turnbaugh
 
-  This file is part of FutureGL.
+  This file is part of Lgl.
 
-  FutureGL is free software: you can redistribute it and/or modify
+  Lgl is free software: you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
   the Free Software Foundation, either version 3 of the License, or
   (at your option) any later version.
 
-  FutureGL is distributed in the hope that it will be useful,
+  Lgl is distributed in the hope that it will be useful,
   but WITHOUT ANY WARRANTY; without even the implied warranty of
   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
   GNU General Public License for more details.
 
   You should have received a copy of the GNU General Public License
-  along with FutureGL.  If not, see <http://www.gnu.org/licenses/>.
+  along with Lgl.  If not, see <http://www.gnu.org/licenses/>.
 */
 
 #pragma once
@@ -33,10 +33,10 @@
 #include "lgl_bar.h"
 #include "lgl_fullscreen.h"
 
-class futuregl {
+class lgl {
 
 public:
-	futuregl(int era);
+	lgl(int era);
 
 	int button(int corner_x, int corner_y, int size, int color, std::string text);
 	int cmdbutton(int corner_x, int corner_y, int color, std::string text);

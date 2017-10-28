@@ -1,29 +1,29 @@
 /*
   Copyright 2015 Carter Turnbaugh
 
-  This file is part of FutureGL.
+  This file is part of Lgl.
 
-  FutureGL is free software: you can redistribute it and/or modify
+  Lgl is free software: you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
   the Free Software Foundation, either version 3 of the License, or
   (at your option) any later version.
 
-  FutureGL is distributed in the hope that it will be useful,
+  Lgl is distributed in the hope that it will be useful,
   but WITHOUT ANY WARRANTY; without even the implied warranty of
   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
   GNU General Public License for more details.
 
   You should have received a copy of the GNU General Public License
-  along with FutureGL.  If not, see <http://www.gnu.org/licenses/>.
+  along with Lgl.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#include "futuregl.h"
+#include "lgl.h"
 #include <fstream>
 #include <cstdlib>
 
 using namespace std;
 
-futuregl::futuregl(int era) : era(era){
+lgl::lgl(int era) : era(era){
 	buttons.clear();
 	cmdbuttons.clear();
 	endbuttons.clear();
@@ -37,61 +37,61 @@ futuregl::futuregl(int era) : era(era){
 	fullscreens.clear();
 }
 
-int futuregl::button(int corner_x, int corner_y, int size, int color, std::string text){
+int lgl::button(int corner_x, int corner_y, int size, int color, std::string text){
 	lgl_button button(corner_x, corner_y, size, era, color, text);
 	buttons.push_back(button);
 	return 0;
 }
 
-int futuregl::cmdbutton(int corner_x, int corner_y, int color, std::string text){
+int lgl::cmdbutton(int corner_x, int corner_y, int color, std::string text){
 	lgl_cmdbutton cmdbutton(corner_x, corner_y, era, color, text);
 	cmdbuttons.push_back(cmdbutton);
 	return 0;
 }
 
-int futuregl::endbutton(int corner_x, int corner_y, int orientation, int color, std::string text){
+int lgl::endbutton(int corner_x, int corner_y, int orientation, int color, std::string text){
 	lgl_endbutton endbutton(corner_x, corner_y, orientation, era, color, text);
 	endbuttons.push_back(endbutton);
 	return 0;
 }
 
-int futuregl::multibutton(int corner_x, int corner_y, int extend, int color){
+int lgl::multibutton(int corner_x, int corner_y, int extend, int color){
 	lgl_multibutton multibutton(corner_x, corner_y, extend, era, color);
 	multibuttons.push_back(multibutton);
 	return 0;
 }
 
-int futuregl::endmultibutton(int corner_x, int corner_y, int color){
+int lgl::endmultibutton(int corner_x, int corner_y, int color){
 	lgl_endmultibutton endmultibutton(corner_x, corner_y, era, color);
 	endmultibuttons.push_back(endmultibutton);
 	return 0;
 }
 
-int futuregl::elbow(int corner_x, int corner_y, int length, int size, int orientation_x, int orientation_y, int color, std::string text){
+int lgl::elbow(int corner_x, int corner_y, int length, int size, int orientation_x, int orientation_y, int color, std::string text){
 	lgl_elbow elbow(corner_x, corner_y, length, size, orientation_x, orientation_y, era, color, text);
 	elbows.push_back(elbow);
 	return 0;
 }
 
-int futuregl::elbowbutton(int corner_x, int corner_y, int length, int size, int orientation_x, int orientation_y, int color, std::string text){
+int lgl::elbowbutton(int corner_x, int corner_y, int length, int size, int orientation_x, int orientation_y, int color, std::string text){
 	lgl_elbowbutton elbowbutton(corner_x, corner_y, length, size, orientation_x, orientation_y, era, color, text);
 	elbowbuttons.push_back(elbowbutton);
 	return 0;
 }
 
-int futuregl::bar(int corner_x, int corner_y, int length, int color){
+int lgl::bar(int corner_x, int corner_y, int length, int color){
 	lgl_bar bar(corner_x, corner_y, length, era, color);
 	bars.push_back(bar);
 	return 0;
 }
 
-int futuregl::fullscreen(int corner_x, int corner_y, int size_x, int size_y, int color, std::string main_text, std::string sub_text){
+int lgl::fullscreen(int corner_x, int corner_y, int size_x, int size_y, int color, std::string main_text, std::string sub_text){
 	lgl_fullscreen fullscreen(corner_x, corner_y, size_x, size_y, era, color, main_text, sub_text);
 	fullscreens.push_back(fullscreen);
 	return 0;
 }
 
-int futuregl::setmultibutton(int id, int value, bool end){
+int lgl::setmultibutton(int id, int value, bool end){
 	if(!end){
 		if(id >= multibuttons.size()){
 			return -1;
@@ -108,7 +108,7 @@ int futuregl::setmultibutton(int id, int value, bool end){
 	return 0;
 }
 
-int futuregl::draw(){
+int lgl::draw(){
 	
 	for(int i = 0; i < buttons.size(); i++) buttons[i].draw();
 	for(int i = 0; i < cmdbuttons.size(); i++) cmdbuttons[i].draw();
@@ -123,7 +123,7 @@ int futuregl::draw(){
 	return 0;
 }
 
-string futuregl::getclicked(int mouse_x, int mouse_y){
+string lgl::getclicked(int mouse_x, int mouse_y){
 	string clicked_title = "";
 	
 	for(int i = 0; i < buttons.size(); i++){
@@ -158,7 +158,7 @@ vector<string> split_string(string data, char splitter){
 	return tokens;
 }
 
-int futuregl::load_config(string path){
+int lgl::load_config(string path){
 
 	fstream configfile;
 	configfile.open(path.c_str());
