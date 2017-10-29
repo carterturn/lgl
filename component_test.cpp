@@ -5,11 +5,13 @@
 #include "lgl_label.h"
 #include "lgl_button.h"
 #include "lgl_const.h"
+#include "lgl_elbow.h"
 
 using lgl::label;
 using lgl::color;
 using lgl::callable_function;
 using lgl::button;
+using lgl::elbow;
 using std::cout;
 using std::vector;
 
@@ -21,15 +23,6 @@ void l5_callback(){
 }
 void l6_callback(){
 	cout << "l6 clicked\n";
-}
-void l9_callback(){
-	cout << "l9 clicked\n";
-}
-void l11_callback(){
-	cout << "l11 clicked\n";
-}
-void l12_callback(){
-	cout << "l12 clicked\n";
 }
 
 // #globalization
@@ -44,13 +37,11 @@ callable_function * l6_func;
 button * l6;
 label * l7;
 label * l8;
-callable_function * l9_func;
-button * l9;
-label * l10;
-callable_function * l11_func;
-button * l11;
-callable_function * l12_func;
-button * l12;
+label * l9;
+elbow * e1;
+elbow * e2;
+elbow * e3;
+elbow * e4;
 
 void mouse(GLFWwindow * window, int button, int state, int mods){
 	int mouse_button = button == GLFW_MOUSE_BUTTON_LEFT ? lgl::left_mouse_button : lgl::right_mouse_button;
@@ -62,11 +53,7 @@ void mouse(GLFWwindow * window, int button, int state, int mods){
 			
 	l4->try_click(Mx, My, mouse_button, mouse_state);
 	l5->try_click(Mx, My, mouse_button, mouse_state);
-
 	l6->try_click(Mx, My, mouse_button, mouse_state);
-	l9->try_click(Mx, My, mouse_button, mouse_state);
-	l11->try_click(Mx, My, mouse_button, mouse_state);
-	l12->try_click(Mx, My, mouse_button, mouse_state);
 }
 
 int main(int argc, char * argv[]){
@@ -83,13 +70,11 @@ int main(int argc, char * argv[]){
 	l6 = new button(1, 0, 5, 0, "l6", l6_func);
 	l7 = new label(1, 1, 0, 1, "l7");
 	l8 = new label(1, 1, 2, 1, "l8");
-	l9_func = new callable_function(&l9_callback);
-	l9 = new button(1, 1, 4, 1, "l9", l9_func);
-	l10 = new label(1, 2, 0, 2, "l10");
-	l11_func = new callable_function(&l11_callback);
-	l11 = new button(1, 2, 3, 2, "l11", l11_func);
-	l12_func = new callable_function(&l12_callback);
-	l12 = new button(1, 3, 0, 5, "l12", l12_func);
+	l9 = new label(1, 1, 4, 1, "l9");
+	e1 = new elbow(1, 1, 6, 0, true, true, "");
+	e2 = new elbow(1, 2, 0, 2, true, false, "");
+	e3 = new elbow(1, 7, 6, 3, false, true, "");
+	e4 = new elbow(1, 7, 0, 0, false, false, "");
 
 	glfwInit();
 
@@ -111,9 +96,10 @@ int main(int argc, char * argv[]){
 		l7->draw();
 		l8->draw();
 		l9->draw();
-		l10->draw();
-		l11->draw();
-		l12->draw();
+		e1->draw();
+		e2->draw();
+		e3->draw();
+		e4->draw();
 		glfwSwapBuffers(window);
 	}
 
@@ -130,13 +116,11 @@ int main(int argc, char * argv[]){
 	delete l6;
 	delete l7;
 	delete l8;
-	delete l9_func;
 	delete l9;
-	delete l10;
-	delete l11_func;
-	delete l11;
-	delete l12_func;
-	delete l12;
+	delete e1;
+	delete e2;
+	delete e3;
+	delete e4;
 
 	return 0;
 }

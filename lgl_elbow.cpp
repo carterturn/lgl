@@ -17,22 +17,33 @@
   along with LGL.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#include "lgl_button.h"
+#include "lgl_elbow.h"
+
+#include <GL/gl.h>
 
 using namespace lgl;
 
-button::button(int color, int column, int row, int height, string text, callable * call_on_click)
-	: label(color, column, row, height, text), clickable(call_on_click) {}
+elbow::elbow(int color, int column, int row, int length, bool right, bool down, string text)
+	: object(color), m_column(column), m_row(row), m_length(length),
+	  m_right(right), m_down(down), m_text(text) {}
 
-bool button::clicked(int grid_click_x, int grid_click_y, int mouse_button, int mouse_state){
-	bool clicked = grid_click_x == m_column && (m_row <= grid_click_y && m_row + m_height >= grid_click_y);
-	if(clicked && mouse_state == m_mouse_state && mouse_button == m_mouse_button){
-		if(colors.size() > m_original_color + 1){
-			set_color(m_original_color + 1);
-		}
+void elbow::draw_shapes(){
+	int right_adj = m_right ? 1 : -2;
+	int left_adj = m_right ? 2 : -1;
+	length_adjusted_rectangle(m_column, m_row, left_adj, right_adj);
+
+	if(m_right){
+		half_rectangle(m_column + 1, m_column + 1 + m_length, m_row, m_down);
 	}
 	else{
-		reset_color();
+		half_rectangle(m_column - 1 - m_length, m_column - 1, m_row, m_down);
 	}
-	return clicked;
+
+	full_arc(m_column, m_row, m_right, m_down);
+
+	set_color(0);
+	
+	half_arc(m_column, m_row, m_right, !m_down, m_down);
+
+	reset_color();
 }

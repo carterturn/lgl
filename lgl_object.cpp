@@ -46,10 +46,14 @@ object::~object(){
 
 void object::set_color(int color){
 	m_color = color;
+	
+	glColor3f(colors[m_color].R, colors[m_color].G, colors[m_color].B);	
 }
 
 void object::reset_color(){
 	m_color = m_original_color;
+	
+	glColor3f(colors[m_color].R, colors[m_color].G, colors[m_color].B);	
 }
 
 void object::draw(){
@@ -100,11 +104,11 @@ void object::full_rectangle(int grid_left, int grid_right, int grid_bottom, int 
 	glEnd();
 }
 
-void object::half_rectangle(int grid_left, int grid_right, int grid_bottom, int grid_top, bool at_top){
+void object::half_rectangle(int grid_left, int grid_right, int grid_y, bool at_top){
 	int left = (grid_left * (grid_width + gap)) * scale_factor;
 	int right = (grid_right * (grid_width + gap) + grid_width) * scale_factor;
-	int bottom = (grid_bottom * (grid_height + gap)) * scale_factor;
-	int top = (grid_top * (grid_height + gap)) * scale_factor;
+	int bottom = (grid_y * (grid_height + gap)) * scale_factor;
+	int top = (grid_y * (grid_height + gap) + grid_height) * scale_factor;
 
 	if(at_top){
 		bottom += (grid_height / 2) * scale_factor;
@@ -112,6 +116,24 @@ void object::half_rectangle(int grid_left, int grid_right, int grid_bottom, int 
 	else{
 		top -= (grid_height / 2) * scale_factor;
 	}
+	
+	glBegin(GL_QUADS);
+	
+	glVertex2i(left, top);
+	glVertex2i(right, top);
+	glVertex2i(right, bottom);
+	glVertex2i(left, bottom);
+	
+	glEnd();
+}
+
+void object::length_adjusted_rectangle(int grid_x, int grid_y, short left_adj, short right_adj){
+	int left = (grid_x * (grid_width + gap)
+		    + left_adj * grid_height / 2) * scale_factor;
+	int right = (grid_x * (grid_width + gap) + grid_width
+		     + right_adj * grid_height / 2) * scale_factor;
+	int bottom = (grid_y * (grid_height + gap)) * scale_factor;
+	int top = (grid_y * (grid_height + gap) + grid_height) * scale_factor;
 	
 	glBegin(GL_QUADS);
 	
@@ -170,10 +192,10 @@ void object::full_arc(int grid_x, int grid_y, bool left, bool down){
 void object::half_arc(int grid_x, int grid_y, bool left, bool at_top, bool down){
 	int center_x, center_y;
 	if(left){
-		center_x = (grid_x * (grid_width + gap) + grid_height) * scale_factor;
+		center_x = (grid_x * (grid_width + gap) + grid_width + grid_height / 2) * scale_factor;
 	}
 	else{
-		center_x = (grid_x * (grid_width + gap) + grid_width - grid_height) * scale_factor;
+		center_x = (grid_x * (grid_width + gap) - grid_height / 2) * scale_factor;
 	}
 	if(down){
 		center_y = grid_y * (grid_height + gap) * scale_factor;

@@ -46,7 +46,8 @@ namespace lgl {
 		void draw_text(int grid_left, int grid_bottom, string text);
 
 		void full_rectangle(int grid_left, int grid_right, int grid_bottom, int grid_top);
-		void half_rectangle(int grid_left, int grid_right, int grid_bottom, int grid_top, bool at_top);
+		void half_rectangle(int grid_left, int grid_right, int grid_y, bool at_top);
+		void length_adjusted_rectangle(int grid_x, int grid_y, short left_adj, short right_adj);
 		void full_arc(int grid_x, int grid_y, bool left, bool down);
 		void half_arc(int grid_x, int grid_y, bool left, bool at_top, bool down);
 
