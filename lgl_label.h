@@ -33,8 +33,7 @@ namespace lgl {
 
 	protected:
 		void draw_shapes();
-
-	private:
+		
 		int m_column, m_row, m_height;
 		string m_text;
 	};

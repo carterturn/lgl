@@ -19,28 +19,15 @@
 
 #pragma once
 
+#include "lgl_const.h"
+
 #include <FTGL/ftgl.h>
 
-#include <vector>
 #include <string>
 
-using std::vector;
 using std::string;
 
 namespace lgl {
-	
-	struct color{
-		float R;
-		float G;
-		float B;
-	};
-	
-	const int grid_width = 45;
-	const int grid_height = 18;
-	const int gap = 1;
-
-	extern vector<color> colors;
-	extern float scale_factor;
 	extern string font_path;
 
 	class object {

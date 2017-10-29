@@ -19,22 +19,21 @@
 
 #pragma once
 
-#include "lgl_const.h"
-#include "lgl_callable.h"
+#include <vector>
+
+using std::vector;
 
 namespace lgl {
-
-	class clickable {
-	public:
-		clickable(callable * call_on_click);
-		
-		bool try_click(int click_x, int click_y);
-		
-	protected:
-		virtual bool clicked(int click_x, int click_y) = 0;
-
-	private:
-		callable * m_call_on_click;
+	struct color{
+		float R;
+		float G;
+		float B;
 	};
+	
+	const int grid_width = 45;
+	const int grid_height = 18;
+	const int gap = 1;
 
-};
+	extern vector<color> colors;
+	extern float scale_factor;
+}

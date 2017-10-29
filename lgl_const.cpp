@@ -17,24 +17,7 @@
   along with LGL.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#pragma once
-
 #include "lgl_const.h"
-#include "lgl_callable.h"
 
-namespace lgl {
-
-	class clickable {
-	public:
-		clickable(callable * call_on_click);
-		
-		bool try_click(int click_x, int click_y);
-		
-	protected:
-		virtual bool clicked(int click_x, int click_y) = 0;
-
-	private:
-		callable * m_call_on_click;
-	};
-
-};
+vector<lgl::color> lgl::colors = vector<color>();
+float lgl::scale_factor = 1.0f;

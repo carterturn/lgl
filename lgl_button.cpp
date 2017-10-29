@@ -17,24 +17,13 @@
   along with LGL.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#pragma once
+#include "lgl_button.h"
 
-#include "lgl_const.h"
-#include "lgl_callable.h"
+using namespace lgl;
 
-namespace lgl {
+button::button(int column, int row, int height, string text, callable * call_on_click)
+	: label(column, row, height, text), clickable(call_on_click) {}
 
-	class clickable {
-	public:
-		clickable(callable * call_on_click);
-		
-		bool try_click(int click_x, int click_y);
-		
-	protected:
-		virtual bool clicked(int click_x, int click_y) = 0;
-
-	private:
-		callable * m_call_on_click;
-	};
-
-};
+bool button::clicked(int grid_click_x, int grid_click_y){
+	return grid_click_x == m_column && (m_row <= grid_click_y && m_row + m_height >= grid_click_y) ;
+}

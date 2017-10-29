@@ -19,22 +19,17 @@
 
 #pragma once
 
-#include "lgl_const.h"
-#include "lgl_callable.h"
+#include "lgl_label.h"
+#include "lgl_clickable.h"
 
 namespace lgl {
-
-	class clickable {
+	
+	class button : public label, public clickable {
 	public:
-		clickable(callable * call_on_click);
-		
-		bool try_click(int click_x, int click_y);
-		
+		button(int column, int row, int height, string text, callable * call_on_click);
+
 	protected:
-		virtual bool clicked(int click_x, int click_y) = 0;
-
-	private:
-		callable * m_call_on_click;
+		bool clicked(int grid_click_x, int grid_click_y);
 	};
-
+	
 };

@@ -62,10 +62,10 @@ void object::draw_text(int grid_x, int grid_y, string text){
 		right = bounding_box.Upper().X();
 		top = bounding_box.Upper().Y();
 		font_size--;
-	} while(right > grid_width * 3.0/4.0 || top > grid_height * 3.0/4.0);
+	} while(right > grid_width * 3.0/4.0 * scale_factor || top > grid_height * 3.0/4.0 * scale_factor);
 
-	int left = grid_x * (grid_width + gap) + grid_width * 1.0/8.0;
-	int bottom = grid_y * (grid_height + gap) + gap;
+	int left = (grid_x * (grid_width + gap) + grid_width * 1.0/8.0) * scale_factor;
+	int bottom = (grid_y * (grid_height + gap) + gap) * scale_factor;
 
 	glTranslated(left, bottom, 0);
 
@@ -75,10 +75,10 @@ void object::draw_text(int grid_x, int grid_y, string text){
 }
 
 void object::full_rectangle(int grid_left, int grid_right, int grid_bottom, int grid_top){
-	int left = grid_left * (grid_width + gap);
-	int right = grid_right * (grid_width + gap) + grid_width;
-	int bottom = grid_bottom * (grid_height + gap);
-	int top = grid_top * (grid_height + gap) + grid_height;
+	int left = (grid_left * (grid_width + gap)) * scale_factor;
+	int right = (grid_right * (grid_width + gap) + grid_width) * scale_factor;
+	int bottom = (grid_bottom * (grid_height + gap)) * scale_factor;
+	int top = (grid_top * (grid_height + gap) + grid_height) * scale_factor;
 	
 	glBegin(GL_QUADS);
 	
@@ -91,16 +91,16 @@ void object::full_rectangle(int grid_left, int grid_right, int grid_bottom, int 
 }
 
 void object::half_rectangle(int grid_left, int grid_right, int grid_bottom, int grid_top, bool at_top){
-	int left = grid_left * (grid_width + gap);
-	int right = grid_right * (grid_width + gap) + grid_width;
-	int bottom = grid_bottom * (grid_height + gap);
-	int top = grid_top * (grid_height + gap);
+	int left = (grid_left * (grid_width + gap)) * scale_factor;
+	int right = (grid_right * (grid_width + gap) + grid_width) * scale_factor;
+	int bottom = (grid_bottom * (grid_height + gap)) * scale_factor;
+	int top = (grid_top * (grid_height + gap)) * scale_factor;
 
 	if(at_top){
-		bottom += grid_height / 2;
+		bottom += (grid_height / 2) * scale_factor;
 	}
 	else{
-		top -= grid_height / 2;
+		top -= (grid_height / 2) * scale_factor;
 	}
 	
 	glBegin(GL_QUADS);
@@ -130,21 +130,21 @@ float object::get_arc_end_angle(bool left, bool down){
 void object::full_arc(int grid_x, int grid_y, bool left, bool down){
 	int center_x, center_y;
 	if(left){
-		center_x = grid_x * (grid_width + gap) + grid_height;
+		center_x = (grid_x * (grid_width + gap) + grid_height) * scale_factor;
 	}
 	else{
-		center_x = grid_x * (grid_width + gap) + grid_width - grid_height;
+		center_x = (grid_x * (grid_width + gap) + grid_width - grid_height) * scale_factor;
 	}
 	if(down){
-		center_y = grid_y * (grid_height + gap);
+		center_y = (grid_y * (grid_height + gap)) * scale_factor;
 	}
 	else{
-		center_y = grid_y * (grid_height + gap) + grid_height;
+		center_y = (grid_y * (grid_height + gap) + grid_height) * scale_factor;
 	}
 
 	float start_angle = get_arc_start_angle(left, down);
 	float end_angle = get_arc_end_angle(left, down);
-	float radius =  grid_height;
+	float radius =  grid_height * scale_factor;
 	
 	glBegin(GL_POLYGON);
 	glVertex2i(center_x,center_y);
@@ -160,27 +160,27 @@ void object::full_arc(int grid_x, int grid_y, bool left, bool down){
 void object::half_arc(int grid_x, int grid_y, bool left, bool at_top, bool down){
 	int center_x, center_y;
 	if(left){
-		center_x = grid_x * (grid_width + gap) + grid_height;
+		center_x = (grid_x * (grid_width + gap) + grid_height) * scale_factor;
 	}
 	else{
-		center_x = grid_x * (grid_width + gap) + grid_width - grid_height;
+		center_x = (grid_x * (grid_width + gap) + grid_width - grid_height) * scale_factor;
 	}
 	if(down){
-		center_y = grid_y * (grid_height + gap);
+		center_y = grid_y * (grid_height + gap) * scale_factor;
 		if(at_top){
-			center_y += grid_height / 2;
+			center_y += (grid_height / 2) * scale_factor;
 		}
 	}
 	else{
-		center_y = grid_y * (grid_height + gap) + grid_height;
+		center_y = (grid_y * (grid_height + gap) + grid_height) * scale_factor;
 		if(!at_top){
-			center_y -= grid_height / 2;
+			center_y -= (grid_height / 2) * scale_factor;
 		}
 	}
 
 	float start_angle = get_arc_start_angle(left, down);
 	float end_angle = get_arc_end_angle(left, down);
-	float radius =  grid_height / 2.0f;
+	float radius =  (grid_height / 2.0f) * scale_factor;
 	
 	glBegin(GL_POLYGON);
 	glVertex2i(center_x,center_y);
@@ -193,6 +193,4 @@ void object::half_arc(int grid_x, int grid_y, bool left, bool at_top, bool down)
 	glEnd();
 }
 
-vector<color> lgl::colors = vector<color>();
-float lgl::scale_factor = 1.0f;
 string lgl::font_path = "./font.ttf";
