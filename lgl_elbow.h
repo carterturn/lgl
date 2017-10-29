@@ -34,6 +34,9 @@ namespace lgl {
 	protected:
 		void draw_shapes();
 		
+		void elbow_outside();
+		void elbow_inside();
+
 		int m_column, m_row, m_length;
 		bool m_right, m_down;
 		string m_text;

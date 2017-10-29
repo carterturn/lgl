@@ -39,11 +39,47 @@ void elbow::draw_shapes(){
 		half_rectangle(m_column - 1 - m_length, m_column - 1, m_row, m_down);
 	}
 
-	full_arc(m_column, m_row, m_right, m_down);
+	elbow_outside();
 
 	set_color(0);
-	
-	half_arc(m_column, m_row, m_right, !m_down, m_down);
-
+	elbow_inside();
 	reset_color();
+}
+
+void elbow::elbow_outside(){
+	int center_x, center_y;
+	if(m_right){
+		center_x = (m_column * (grid_width + gap) + grid_height) * scale_factor;
+	}
+	else{
+		center_x = (m_column * (grid_width + gap) + grid_width - grid_height) * scale_factor;
+	}
+	if(m_down){
+		center_y = (m_row * (grid_height + gap)) * scale_factor;
+	}
+	else{
+		center_y = (m_row * (grid_height + gap) + grid_height) * scale_factor;
+	}
+
+	arc(center_x, center_y, grid_height * scale_factor,
+	    get_arc_start_angle(m_right, m_down), get_arc_end_angle(m_right, m_down));
+}
+
+void elbow::elbow_inside(){
+	int center_x, center_y;
+	if(m_right){
+		center_x = (m_column * (grid_width + gap) + grid_width + grid_height / 2) * scale_factor;
+	}
+	else{
+		center_x = (m_column * (grid_width + gap) - grid_height / 2) * scale_factor;
+	}
+	if(m_down){
+		center_y = m_row * (grid_height + gap) * scale_factor;
+	}
+	else{
+		center_y = (m_row * (grid_height + gap) + grid_height) * scale_factor;
+	}
+
+	arc(center_x, center_y, (grid_height / 2.0f) * scale_factor,
+	    get_arc_start_angle(m_right, m_down), get_arc_end_angle(m_right, m_down));
 }

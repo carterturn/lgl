@@ -48,16 +48,14 @@ namespace lgl {
 		void full_rectangle(int grid_left, int grid_right, int grid_bottom, int grid_top);
 		void half_rectangle(int grid_left, int grid_right, int grid_y, bool at_top);
 		void length_adjusted_rectangle(int grid_x, int grid_y, short left_adj, short right_adj);
-		void full_arc(int grid_x, int grid_y, bool left, bool down);
-		void half_arc(int grid_x, int grid_y, bool left, bool at_top, bool down);
+		float get_arc_start_angle(bool left, bool down);
+		float get_arc_end_angle(bool left, bool down);
+		void arc(int center_x, int center_y, float radius, float start_angle, float end_angle);
 
 		int m_color;
 		int m_original_color;
 		
-	private:
-		float get_arc_start_angle(bool left, bool down);
-		float get_arc_end_angle(bool left, bool down);
-		
+	private:		
 		FTTextureFont * font;
 	};
 };

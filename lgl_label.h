@@ -30,12 +30,16 @@ namespace lgl {
 	class label : public object {
 	public:
 		label(int color, int column, int row, int height, string text);
+		label(int color, int column, int row, bool left_cap, bool right_cap, string text);
 
 	protected:
 		void draw_shapes();
-		
+
+		void cap(bool left);
+
 		int m_column, m_row, m_height;
 		string m_text;
+		bool m_left_cap, m_right_cap;
 	};
 	
 };

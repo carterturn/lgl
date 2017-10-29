@@ -159,25 +159,7 @@ float object::get_arc_end_angle(bool left, bool down){
 	return 360;
 }
 
-void object::full_arc(int grid_x, int grid_y, bool left, bool down){
-	int center_x, center_y;
-	if(left){
-		center_x = (grid_x * (grid_width + gap) + grid_height) * scale_factor;
-	}
-	else{
-		center_x = (grid_x * (grid_width + gap) + grid_width - grid_height) * scale_factor;
-	}
-	if(down){
-		center_y = (grid_y * (grid_height + gap)) * scale_factor;
-	}
-	else{
-		center_y = (grid_y * (grid_height + gap) + grid_height) * scale_factor;
-	}
-
-	float start_angle = get_arc_start_angle(left, down);
-	float end_angle = get_arc_end_angle(left, down);
-	float radius =  grid_height * scale_factor;
-	
+void object::arc(int center_x, int center_y, float radius, float start_angle, float end_angle){
 	glBegin(GL_POLYGON);
 	glVertex2i(center_x,center_y);
 	for(float i = start_angle; i < end_angle; i+=0.02){
@@ -188,40 +170,3 @@ void object::full_arc(int grid_x, int grid_y, bool left, bool down){
 	}
 	glEnd();
 }
-
-void object::half_arc(int grid_x, int grid_y, bool left, bool at_top, bool down){
-	int center_x, center_y;
-	if(left){
-		center_x = (grid_x * (grid_width + gap) + grid_width + grid_height / 2) * scale_factor;
-	}
-	else{
-		center_x = (grid_x * (grid_width + gap) - grid_height / 2) * scale_factor;
-	}
-	if(down){
-		center_y = grid_y * (grid_height + gap) * scale_factor;
-		if(at_top){
-			center_y += (grid_height / 2) * scale_factor;
-		}
-	}
-	else{
-		center_y = (grid_y * (grid_height + gap) + grid_height) * scale_factor;
-		if(!at_top){
-			center_y -= (grid_height / 2) * scale_factor;
-		}
-	}
-
-	float start_angle = get_arc_start_angle(left, down);
-	float end_angle = get_arc_end_angle(left, down);
-	float radius =  (grid_height / 2.0f) * scale_factor;
-	
-	glBegin(GL_POLYGON);
-	glVertex2i(center_x,center_y);
-	for(float i = start_angle; i < end_angle; i+=0.02){
-		float angle = i/57.3;
-		float x2 = center_x+cos(angle)*radius;
-		float y2 = center_y+sin(angle)*radius;
-		glVertex2f(x2,y2);
-	}
-	glEnd();
-}
-

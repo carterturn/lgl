@@ -22,10 +22,52 @@
 using namespace lgl;
 
 label::label(int color, int column, int row, int height, string text)
-	: object(color), m_column(column), m_row(row), m_height(height), m_text(text) {}
+	: object(color), m_column(column), m_row(row), m_height(height), m_text(text),
+	  m_left_cap(false), m_right_cap(false) {}
+
+label::label(int color, int column, int row, bool left_cap, bool right_cap, string text)
+	: object(color), m_column(column), m_row(row), m_height(0), m_text(text),
+	  m_left_cap(left_cap), m_right_cap(right_cap) {}
 
 void label::draw_shapes(){
-	full_rectangle(m_column, m_column, m_row, m_row + m_height);
+	if(!m_left_cap && !m_right_cap){
+		full_rectangle(m_column, m_column, m_row, m_row + m_height);
+	}
+	else{
+		short left_adj = m_left_cap ? 1 : 0;
+		short right_adj = m_right_cap ? -1 : 0;
+
+		length_adjusted_rectangle(m_column, m_row, left_adj, right_adj);
+	}
+
+	if(m_left_cap){
+		cap(true);
+	}
+	if(m_right_cap){
+		cap(false);
+	}
 
 	draw_text(m_column, m_row, m_text);
+}
+
+void label::cap(bool left){
+	int center_x;
+	if(left){
+		center_x = (m_column * (grid_width + gap) + grid_height / 2) * scale_factor;
+	}
+	else{
+		center_x = (m_column * (grid_width + gap) + grid_width - grid_height / 2) * scale_factor;
+	}
+
+	float start_angle, end_angle;
+	if(left){
+		start_angle = 90;
+		end_angle = 270;
+	}
+	else{
+		start_angle = -90;
+		end_angle = 90;
+	}
+	
+	arc(center_x, m_row * (grid_height + gap) + grid_height / 2, grid_height / 2, start_angle, end_angle);
 }

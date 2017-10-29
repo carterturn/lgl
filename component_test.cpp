@@ -60,12 +60,12 @@ int main(int argc, char * argv[]){
 	lgl::colors = vector<color>({{0.0f, 0.0f, 0.0f}, {1.0f, 1.0f, 0.6f}, {1.0f, 0.6f, 0.2f}});	
 
 	l1 = new label(1, 0, 0, 0, "l1");
-	l2 = new label(1, 0, 1, 0, "l2");
-	l3 = new label(1, 0, 2, 0, "l3");
+	l2 = new label(1, 0, 1, false, true, "l2");
+	l3 = new label(1, 0, 2, true, false, "l3");
 	l4_func = new callable_function(&l4_callback);
 	l4 = new button(1, 0, 3, 0, "l4", l4_func);
 	l5_func = new callable_function(&l5_callback);
-	l5 = new button(1, 0, 4, 0, "l5", l5_func);
+	l5 = new button(1, 0, 4, true, true, "l5", l5_func);
 	l6_func = new callable_function(&l6_callback);
 	l6 = new button(1, 0, 5, 0, "l6", l6_func);
 	l7 = new label(1, 1, 0, 1, "l7");
