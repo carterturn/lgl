@@ -24,17 +24,26 @@
 
 namespace lgl {
 
+	const int left_mouse_button = 1;
+	const int right_mouse_button = 2;
+	const int mouse_down_state = 1;
+	const int mouse_up_state = 2;
+	
 	class clickable {
 	public:
-		clickable(callable * call_on_click);
+		clickable(callable * call_on_click, int mouse_button=left_mouse_button,
+			  int mouse_state=mouse_down_state);
 		
-		bool try_click(int click_x, int click_y);
+		bool try_click(int click_x, int click_y, int mouse_button, int mouse_state);
 		
 	protected:
 		virtual bool clicked(int click_x, int click_y) = 0;
 
 	private:
 		callable * m_call_on_click;
+		
+		int m_mouse_button;
+		int m_mouse_state;
 	};
 
 };

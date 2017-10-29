@@ -26,7 +26,7 @@ namespace lgl {
 	
 	class button : public label, public clickable {
 	public:
-		button(int column, int row, int height, string text, callable * call_on_click);
+		button(int color, int column, int row, int height, string text, callable * call_on_click);
 
 	protected:
 		bool clicked(int grid_click_x, int grid_click_y);

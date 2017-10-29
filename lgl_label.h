@@ -29,7 +29,7 @@ namespace lgl {
 	
 	class label : public object {
 	public:
-		label(int column, int row, int height, string text);
+		label(int color, int column, int row, int height, string text);
 
 	protected:
 		void draw_shapes();

@@ -32,10 +32,12 @@ namespace lgl {
 
 	class object {
 	public:
-		object();
+		object(int color);
 		~object();
 
-		void draw(int color);
+		void set_color(int color);
+
+		void draw();
 	protected:
 		virtual void draw_shapes() = 0;
 		
@@ -45,6 +47,8 @@ namespace lgl {
 		void half_rectangle(int grid_left, int grid_right, int grid_bottom, int grid_top, bool at_top);
 		void full_arc(int grid_x, int grid_y, bool left, bool down);
 		void half_arc(int grid_x, int grid_y, bool left, bool at_top, bool down);
+
+		int m_color;
 	private:
 		float get_arc_start_angle(bool left, bool down);
 		float get_arc_end_angle(bool left, bool down);

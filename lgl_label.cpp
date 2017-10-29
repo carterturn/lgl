@@ -21,8 +21,8 @@
 
 using namespace lgl;
 
-label::label(int column, int row, int height, string text)
-	: m_column(column), m_row(row), m_height(height), m_text(text) {}
+label::label(int color, int column, int row, int height, string text)
+	: object(color), m_column(column), m_row(row), m_height(height), m_text(text) {}
 
 void label::draw_shapes(){
 	full_rectangle(m_column, m_column, m_row, m_row + m_height);

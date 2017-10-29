@@ -28,10 +28,12 @@ using std::cerr;
 using std::cout;
 using std::endl;
 
-object::object(){
+string lgl::font_path = "./font.ttf";
+
+object::object(int color) : m_color(color){
 	font = new FTTextureFont(font_path.c_str());
 	if(font->Error()){
-		cerr << "Font not found" << endl;
+		cerr << "Font not found at " << font_path << endl;
 		return;
 	}
 	
@@ -42,8 +44,12 @@ object::~object(){
 	delete font;
 }
 
-void object::draw(int color){
-	glColor3f(colors[color].R, colors[color].G, colors[color].B);
+void object::set_color(int color){
+	m_color = color;
+}
+
+void object::draw(){
+	glColor3f(colors[m_color].R, colors[m_color].G, colors[m_color].B);
 	
 	draw_shapes();
 }
@@ -193,4 +199,3 @@ void object::half_arc(int grid_x, int grid_y, bool left, bool at_top, bool down)
 	glEnd();
 }
 
-string lgl::font_path = "./font.ttf";
