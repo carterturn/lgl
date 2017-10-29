@@ -37,13 +37,13 @@ namespace lgl {
 		bool try_click(int click_x, int click_y, int mouse_button, int mouse_state);
 		
 	protected:
-		virtual bool clicked(int click_x, int click_y) = 0;
+		virtual bool clicked(int click_x, int click_y, int mouse_button, int mouse_state) = 0;
 
-	private:
-		callable * m_call_on_click;
-		
 		int m_mouse_button;
 		int m_mouse_state;
+		
+	private:
+		callable * m_call_on_click;
 	};
 
 };

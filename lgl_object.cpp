@@ -30,7 +30,7 @@ using std::endl;
 
 string lgl::font_path = "./font.ttf";
 
-object::object(int color) : m_color(color){
+object::object(int color) : m_color(color), m_original_color(color){
 	font = new FTTextureFont(font_path.c_str());
 	if(font->Error()){
 		cerr << "Font not found at " << font_path << endl;
@@ -46,6 +46,10 @@ object::~object(){
 
 void object::set_color(int color){
 	m_color = color;
+}
+
+void object::reset_color(){
+	m_color = m_original_color;
 }
 
 void object::draw(){

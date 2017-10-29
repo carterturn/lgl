@@ -28,7 +28,7 @@ bool clickable::try_click(int click_x, int click_y, int mouse_button, int mouse_
 	int grid_x = click_x / ((grid_width + gap) * scale_factor);
 	int grid_y = click_y / ((grid_height + gap) * scale_factor);
 	
-	bool was_clicked = clicked(grid_x, grid_y);
+	bool was_clicked = clicked(grid_x, grid_y, mouse_button, mouse_state);
 	if(was_clicked && mouse_button == m_mouse_button && mouse_state == m_mouse_state){
 		m_call_on_click->call();
 	}

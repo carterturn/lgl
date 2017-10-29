@@ -18,12 +18,24 @@
 */
 
 #include "lgl_button.h"
+#include <iostream>
 
 using namespace lgl;
+
+using std::cout;
 
 button::button(int color, int column, int row, int height, string text, callable * call_on_click)
 	: label(color, column, row, height, text), clickable(call_on_click) {}
 
-bool button::clicked(int grid_click_x, int grid_click_y){
-	return grid_click_x == m_column && (m_row <= grid_click_y && m_row + m_height >= grid_click_y) ;
+bool button::clicked(int grid_click_x, int grid_click_y, int mouse_button, int mouse_state){
+	bool clicked = grid_click_x == m_column && (m_row <= grid_click_y && m_row + m_height >= grid_click_y);
+	if(clicked && mouse_state == m_mouse_state && mouse_button == m_mouse_button){
+		if(colors.size() > m_original_color + 1){
+			set_color(m_original_color + 1);
+		}
+	}
+	else{
+		reset_color();
+	}
+	return clicked;
 }

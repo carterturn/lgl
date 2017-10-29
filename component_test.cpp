@@ -70,7 +70,7 @@ void mouse(GLFWwindow * window, int button, int state, int mods){
 }
 
 int main(int argc, char * argv[]){
-	lgl::colors = vector<color>({{0.0f, 0.0f, 0.0f}, {1.0f, 1.0f, 0.6f}});	
+	lgl::colors = vector<color>({{0.0f, 0.0f, 0.0f}, {1.0f, 1.0f, 0.6f}, {1.0f, 0.6f, 0.2f}});	
 
 	l1 = new label(1, 0, 0, 0, "l1");
 	l2 = new label(1, 0, 1, 0, "l2");
@@ -101,6 +101,7 @@ int main(int argc, char * argv[]){
 
 	while(true){
 		glClear(GL_COLOR_BUFFER_BIT);
+		glfwWaitEvents();
 		l1->draw();
 		l2->draw();
 		l3->draw();
@@ -114,8 +115,6 @@ int main(int argc, char * argv[]){
 		l11->draw();
 		l12->draw();
 		glfwSwapBuffers(window);
-		glfwPollEvents();
-		usleep(10000);
 	}
 
 	glfwTerminate();
