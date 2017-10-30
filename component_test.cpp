@@ -6,12 +6,14 @@
 #include "lgl_button.h"
 #include "lgl_const.h"
 #include "lgl_elbow.h"
+#include "lgl_indicator.h"
 
 using lgl::label;
 using lgl::color;
 using lgl::callable_function;
 using lgl::button;
 using lgl::elbow;
+using lgl::indicator;
 using std::cout;
 using std::vector;
 
@@ -42,6 +44,10 @@ elbow * e1;
 elbow * e2;
 elbow * e3;
 elbow * e4;
+indicator * i1;
+indicator * i2;
+indicator * i3;
+indicator * i4;
 
 void mouse(GLFWwindow * window, int button, int state, int mods){
 	int mouse_button = button == GLFW_MOUSE_BUTTON_LEFT ? lgl::left_mouse_button : lgl::right_mouse_button;
@@ -75,6 +81,10 @@ int main(int argc, char * argv[]){
 	e2 = new elbow(1, 2, 0, 2, true, false, "");
 	e3 = new elbow(1, 7, 6, 3, false, true, "");
 	e4 = new elbow(1, 7, 0, 0, false, false, "");
+	i1 = new indicator(1, 2, 1, false, false, "1001");
+	i2 = new indicator(1, 2, 2, true, false, "01010");
+	i3 = new indicator(1, 2, 3, false, true, "001011");
+	i4 = new indicator(1, 2, 4, true, true, "0001100");
 
 	glfwInit();
 
@@ -100,6 +110,10 @@ int main(int argc, char * argv[]){
 		e2->draw();
 		e3->draw();
 		e4->draw();
+		i1->draw();
+		i2->draw();
+		i3->draw();
+		i4->draw();
 		glfwSwapBuffers(window);
 	}
 
@@ -121,6 +135,10 @@ int main(int argc, char * argv[]){
 	delete e2;
 	delete e3;
 	delete e4;
+	delete i1;
+	delete i2;
+	delete i3;
+	delete i4;
 
 	return 0;
 }

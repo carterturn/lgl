@@ -36,6 +36,8 @@ namespace lgl {
 		~object();
 
 		void set_color(int color);
+		void set_color();
+		void temp_color(int color);
 		void reset_color();
 
 		void draw();

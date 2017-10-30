@@ -17,28 +17,22 @@
   along with LGL.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#include "lgl_label.h"
+#include "lgl_indicator.h"
 
 using namespace lgl;
 
-label::label(int color, int column, int row, int height, string text)
-	: object(color), m_column(column), m_row(row), m_height(height), m_text(text),
-	  m_left_cap(false), m_right_cap(false) {}
+indicator::indicator(int color, int column, int row, bool left_cap, bool right_cap, string text)
+	: object(color), m_column(column), m_row(row), m_left_cap(left_cap), m_right_cap(right_cap), m_text(text) {}
 
-label::label(int color, int column, int row, bool left_cap, bool right_cap, string text)
-	: object(color), m_column(column), m_row(row), m_height(0), m_text(text),
-	  m_left_cap(left_cap), m_right_cap(right_cap) {}
+void indicator::draw_shapes(){
+	full_rectangle(m_column, m_column, m_row, m_row);
 
-void label::draw_shapes(){
-	if(!m_left_cap && !m_right_cap){
-		full_rectangle(m_column, m_column, m_row, m_row + m_height);
-	}
-	else{
-		short left_adj = m_left_cap ? 1 : 0;
-		short right_adj = m_right_cap ? -1 : 0;
+	short left_adj = m_left_cap ? 0 : 1;
+	short right_adj = m_right_cap ? 0 : -1;
 
-		length_adjusted_rectangle(m_column, m_row, left_adj, right_adj);
-	}
+	temp_color(0);
+	length_adjusted_rectangle(m_column, m_row, left_adj, right_adj);
+	set_color();
 
 	if(m_left_cap){
 		cap(true);
@@ -47,12 +41,10 @@ void label::draw_shapes(){
 		cap(false);
 	}
 
-	temp_color(0);
 	draw_text(m_column, m_row, m_text);
-	set_color();
 }
 
-void label::cap(bool left){
+void indicator::cap(bool left){
 	int center_x;
 	if(left){
 		center_x = (m_column * (grid_width + gap) + grid_height / 2) * scale_factor;

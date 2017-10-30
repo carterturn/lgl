@@ -50,6 +50,14 @@ void object::set_color(int color){
 	glColor3f(colors[m_color].R, colors[m_color].G, colors[m_color].B);	
 }
 
+void object::set_color(){
+	glColor3f(colors[m_color].R, colors[m_color].G, colors[m_color].B);	
+}
+
+void object::temp_color(int color){
+	glColor3f(colors[color].R, colors[color].G, colors[color].B);
+}
+
 void object::reset_color(){
 	m_color = m_original_color;
 	
@@ -63,8 +71,6 @@ void object::draw(){
 }
 
 void object::draw_text(int grid_x, int grid_y, string text){
-	glColor3f(0.0f, 0.0f, 0.0f);
-
 	int font_size = 61;
 	
 	int right = 0;
@@ -76,9 +82,10 @@ void object::draw_text(int grid_x, int grid_y, string text){
 		right = bounding_box.Upper().X();
 		top = bounding_box.Upper().Y();
 		font_size--;
-	} while(right > grid_width * 3.0/4.0 * scale_factor || top > grid_height * 3.0/4.0 * scale_factor);
+	} while(right > (grid_width - grid_height) * scale_factor
+		|| top > grid_height * 7.0/8.0 * scale_factor);
 
-	int left = (grid_x * (grid_width + gap) + grid_width * 1.0/8.0) * scale_factor;
+	int left = (grid_x * (grid_width + gap) + grid_height / 2) * scale_factor;
 	int bottom = (grid_y * (grid_height + gap) + gap) * scale_factor;
 
 	glTranslated(left, bottom, 0);

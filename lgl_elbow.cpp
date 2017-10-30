@@ -41,9 +41,9 @@ void elbow::draw_shapes(){
 
 	elbow_outside();
 
-	set_color(0);
+	temp_color(0);
 	elbow_inside();
-	reset_color();
+	set_color();
 }
 
 void elbow::elbow_outside(){
