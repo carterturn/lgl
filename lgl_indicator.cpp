@@ -21,8 +21,28 @@
 
 using namespace lgl;
 
-indicator::indicator(int color, int column, int row, bool left_cap, bool right_cap, string text)
-	: object(color), m_column(column), m_row(row), m_left_cap(left_cap), m_right_cap(right_cap), m_text(text) {}
+indicator::indicator(int color, int column, int row, bool left_cap, bool right_cap)
+	: object(color), m_column(column), m_row(row), m_left_cap(left_cap), m_right_cap(right_cap), m_text("") {}
+
+int indicator::max_grid_left(){
+	return m_column;
+}
+
+int indicator::max_grid_right(){
+	return m_column;
+}
+
+int indicator::max_grid_top(){
+	return m_row;
+}
+
+int indicator::max_grid_bottom(){
+	return m_row;
+}
+
+void indicator::set_text(string text){
+	m_text = text;
+}
 
 void indicator::draw_shapes(){
 	full_rectangle(m_column, m_column, m_row, m_row);

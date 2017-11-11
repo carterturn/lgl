@@ -32,6 +32,11 @@ namespace lgl {
 		label(int color, int column, int row, int height, string text);
 		label(int color, int column, int row, bool left_cap, bool right_cap, string text);
 
+		int max_grid_left();
+		int max_grid_right();
+		int max_grid_top();
+		int max_grid_bottom();
+
 	protected:
 		void draw_shapes();
 

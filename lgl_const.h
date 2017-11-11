@@ -30,8 +30,8 @@ namespace lgl {
 		float B;
 	};
 	
-	const int grid_width = 45;
-	const int grid_height = 18;
+	const int grid_width = 60;
+	const int grid_height = 24;
 	const int gap = 1;
 
 	extern vector<color> colors;

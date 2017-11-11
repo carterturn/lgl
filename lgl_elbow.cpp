@@ -27,6 +27,32 @@ elbow::elbow(int color, int column, int row, int length, bool right, bool down, 
 	: object(color), m_column(column), m_row(row), m_length(length),
 	  m_right(right), m_down(down), m_text(text) {}
 
+int elbow::max_grid_left(){
+	if(m_right){
+		return m_column;
+	}
+	else{
+		return m_column - 1 - m_length;
+	}
+}
+
+int elbow::max_grid_right(){
+	if(m_right){
+		return m_column + 1 + m_length;
+	}
+	else{
+		return m_column;
+	}
+}
+
+int elbow::max_grid_top(){
+	return m_row;
+}
+
+int elbow::max_grid_bottom(){
+	return m_row;
+}
+
 void elbow::draw_shapes(){
 	int right_adj = m_right ? 1 : -2;
 	int left_adj = m_right ? 2 : -1;

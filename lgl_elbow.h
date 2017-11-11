@@ -31,6 +31,11 @@ namespace lgl {
 	public:
 		elbow(int color, int column, int row, int length, bool right, bool down, string text);
 
+		int max_grid_left();
+		int max_grid_right();
+		int max_grid_top();
+		int max_grid_bottom();
+
 	protected:
 		void draw_shapes();
 		

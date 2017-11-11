@@ -29,7 +29,14 @@ namespace lgl {
 	
 	class indicator : public object {
 	public:
-		indicator(int color, int column, int row, bool left_cap, bool right_cap, string text);
+		indicator(int color, int column, int row, bool left_cap, bool right_cap);
+
+		int max_grid_left();
+		int max_grid_right();
+		int max_grid_top();
+		int max_grid_bottom();
+
+		void set_text(string text);
 
 	protected:
 		void draw_shapes();

@@ -29,6 +29,22 @@ label::label(int color, int column, int row, bool left_cap, bool right_cap, stri
 	: object(color), m_column(column), m_row(row), m_height(0), m_text(text),
 	  m_left_cap(left_cap), m_right_cap(right_cap) {}
 
+int label::max_grid_left(){
+	return m_column;
+}
+
+int label::max_grid_right(){
+	return m_column;
+}
+
+int label::max_grid_top(){
+	return m_row + m_height;
+}
+
+int label::max_grid_bottom(){
+	return m_row;
+}
+
 void label::draw_shapes(){
 	if(!m_left_cap && !m_right_cap){
 		full_rectangle(m_column, m_column, m_row, m_row + m_height);

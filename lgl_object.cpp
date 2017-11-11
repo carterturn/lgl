@@ -21,12 +21,15 @@
 
 #include <GL/gl.h>
 #include <cmath>
+#include <algorithm>
 #include <iostream>
 
 using namespace lgl;
 using std::cerr;
 using std::cout;
 using std::endl;
+using std::min;
+using std::max;
 
 string lgl::font_path = "./font.ttf";
 

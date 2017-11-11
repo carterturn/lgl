@@ -40,6 +40,11 @@ namespace lgl {
 		void temp_color(int color);
 		void reset_color();
 
+		virtual int max_grid_left() = 0;
+		virtual int max_grid_right() = 0;
+		virtual int max_grid_top() = 0;
+		virtual int max_grid_bottom() = 0;
+
 		void draw();
 		
 	protected:
@@ -57,7 +62,7 @@ namespace lgl {
 		int m_color;
 		int m_original_color;
 		
-	private:		
+	private:
 		FTTextureFont * font;
 	};
 };
