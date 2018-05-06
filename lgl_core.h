@@ -29,7 +29,7 @@ namespace lgl {
 	
 	class core {
 	public:
-		core();
+		core(string window_title = "");
 		~core();
 
 		void initialize();
@@ -54,6 +54,7 @@ namespace lgl {
 
 	private:
 		GLFWwindow * m_window;
+		string m_window_title;
 
 		vector<object *> objects;
 		vector<clickable *> clickable_objects;

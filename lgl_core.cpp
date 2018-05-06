@@ -15,7 +15,7 @@ using std::max_element;
 
 using namespace lgl;
 
-core::core(){}
+core::core(string window_title) : m_window_title(window_title) {}
 
 core::~core(){
 	for(int i = 0; i < objects.size(); i++){
@@ -39,7 +39,7 @@ void core::initialize(){
 	m_window_width = (x_max - x_min) * (grid_width + gap) - gap;
 	m_window_height = (y_max - y_min) * (grid_height + gap) - gap;
 	
-	m_window = glfwCreateWindow(m_window_width, m_window_height, "Test", NULL, NULL);
+	m_window = glfwCreateWindow(m_window_width, m_window_height, m_window_title.c_str(), NULL, NULL);
 
 	glfwMakeContextCurrent(m_window);
 
