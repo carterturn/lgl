@@ -4,16 +4,12 @@ TEST_SRC_1 = test1.cpp
 TEST_SRC_2 = test2.cpp
 
 #The core includes used by almost all files
-CORE_INC = lgl_const.h lgl_shapes.h lgl_utils.h lgl_object.h
-CORE_SRC = lgl_shapes.cpp lgl_utils.cpp
-
-#The most common buttons
-BUTTON_INC = lgl_abstract_button.h lgl_button.h lgl_cmdbutton.h lgl_endbutton.h
-BUTTON_SRC = lgl_abstract_button.cpp lgl_button.cpp lgl_cmdbutton.cpp lgl_endbutton.cpp
+CORE_INC = lgl_object.h
+CORE_SRC = lgl_object.cpp
 
 #Everything else
-INC = lgl_bar.h lgl_multibutton.h lgl_endmultibutton.h lgl_fullscreen.h lgl_elbow.h lgl_elbowbutton.h lgl.h
-SRC = lgl_bar.cpp lgl_multibutton.cpp lgl_endmultibutton.cpp lgl_fullscreen.cpp lgl_elbow.cpp lgl.cpp
+INC = 
+SRC = 
 
 EXE_1 = test_1
 EXE_2 = test_2

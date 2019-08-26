@@ -27,24 +27,25 @@ using std::string;
 
 namespace lgl {
 	
-	class elbow : public object {
+	class indicator : public object {
 	public:
-		elbow(int color, int column, int row, int length, bool right, bool down, string text);
+		indicator(int color, int column, int row, bool left_cap, bool right_cap);
 
 		int max_grid_left();
 		int max_grid_right();
 		int max_grid_top();
 		int max_grid_bottom();
 
+		void set_text(string text);
+
 	protected:
 		void draw_shapes();
-		
-		void elbow_outside();
-		void elbow_inside();
 
-		int m_column, m_row, m_length;
-		bool m_right, m_down;
+		void cap(bool left);
+
+		int m_column, m_row;
 		string m_text;
+		bool m_left_cap, m_right_cap;
 	};
 	
 };

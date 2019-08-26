@@ -17,34 +17,7 @@
   along with LGL.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#pragma once
+#include "lgl_const.h"
 
-#include "lgl_object.h"
-
-#include <string>
-
-using std::string;
-
-namespace lgl {
-	
-	class elbow : public object {
-	public:
-		elbow(int color, int column, int row, int length, bool right, bool down, string text);
-
-		int max_grid_left();
-		int max_grid_right();
-		int max_grid_top();
-		int max_grid_bottom();
-
-	protected:
-		void draw_shapes();
-		
-		void elbow_outside();
-		void elbow_inside();
-
-		int m_column, m_row, m_length;
-		bool m_right, m_down;
-		string m_text;
-	};
-	
-};
+vector<lgl::color> lgl::colors = vector<color>();
+float lgl::scale_factor = 1.0f;

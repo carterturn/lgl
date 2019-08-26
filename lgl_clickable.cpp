@@ -17,34 +17,20 @@
   along with LGL.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#pragma once
+#include "lgl_clickable.h"
 
-#include "lgl_object.h"
+using namespace lgl;
 
-#include <string>
+clickable::clickable(callable * call_on_click, int mouse_button, int mouse_state)
+	: m_call_on_click(call_on_click), m_mouse_button(mouse_button), m_mouse_state(mouse_state) {}
 
-using std::string;
-
-namespace lgl {
+bool clickable::try_click(int click_x, int click_y, int mouse_button, int mouse_state){
+	int grid_x = click_x / ((grid_width + gap) * scale_factor);
+	int grid_y = click_y / ((grid_height + gap) * scale_factor);
 	
-	class elbow : public object {
-	public:
-		elbow(int color, int column, int row, int length, bool right, bool down, string text);
-
-		int max_grid_left();
-		int max_grid_right();
-		int max_grid_top();
-		int max_grid_bottom();
-
-	protected:
-		void draw_shapes();
-		
-		void elbow_outside();
-		void elbow_inside();
-
-		int m_column, m_row, m_length;
-		bool m_right, m_down;
-		string m_text;
-	};
-	
-};
+	bool was_clicked = clicked(grid_x, grid_y, mouse_button, mouse_state);
+	if(was_clicked && mouse_button == m_mouse_button && mouse_state == m_mouse_state){
+		m_call_on_click->call();
+	}
+	return was_clicked;
+}

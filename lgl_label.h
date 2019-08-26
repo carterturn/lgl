@@ -27,9 +27,10 @@ using std::string;
 
 namespace lgl {
 	
-	class elbow : public object {
+	class label : public object {
 	public:
-		elbow(int color, int column, int row, int length, bool right, bool down, string text);
+		label(int color, int column, int row, int height, string text);
+		label(int color, int column, int row, bool left_cap, bool right_cap, string text);
 
 		int max_grid_left();
 		int max_grid_right();
@@ -38,13 +39,12 @@ namespace lgl {
 
 	protected:
 		void draw_shapes();
-		
-		void elbow_outside();
-		void elbow_inside();
 
-		int m_column, m_row, m_length;
-		bool m_right, m_down;
+		void cap(bool left);
+
+		int m_column, m_row, m_height;
 		string m_text;
+		bool m_left_cap, m_right_cap;
 	};
 	
 };

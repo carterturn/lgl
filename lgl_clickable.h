@@ -19,32 +19,31 @@
 
 #pragma once
 
-#include "lgl_object.h"
-
-#include <string>
-
-using std::string;
+#include "lgl_const.h"
+#include "lgl_callable.h"
 
 namespace lgl {
+
+	const int left_mouse_button = 1;
+	const int right_mouse_button = 2;
+	const int mouse_down_state = 1;
+	const int mouse_up_state = 2;
 	
-	class elbow : public object {
+	class clickable {
 	public:
-		elbow(int color, int column, int row, int length, bool right, bool down, string text);
-
-		int max_grid_left();
-		int max_grid_right();
-		int max_grid_top();
-		int max_grid_bottom();
-
-	protected:
-		void draw_shapes();
+		clickable(callable * call_on_click, int mouse_button=left_mouse_button,
+			  int mouse_state=mouse_down_state);
 		
-		void elbow_outside();
-		void elbow_inside();
+		bool try_click(int click_x, int click_y, int mouse_button, int mouse_state);
+		
+	protected:
+		virtual bool clicked(int click_x, int click_y, int mouse_button, int mouse_state) = 0;
 
-		int m_column, m_row, m_length;
-		bool m_right, m_down;
-		string m_text;
+		int m_mouse_button;
+		int m_mouse_state;
+		
+	private:
+		callable * m_call_on_click;
 	};
-	
+
 };
